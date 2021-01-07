@@ -7,3 +7,7 @@ The goal of the assignment is to write an algorithm than can complete multiple s
 Mylèna
 Stef
 Melody
+
+# Extensions
+
+we used: Free UML Tool for Fast UML Diagrams 
