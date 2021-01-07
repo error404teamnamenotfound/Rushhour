@@ -1,0 +1,21 @@
+<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>190</x><y>50</y><w>200</w><h>200</h></coordinates><panel_attributes>Board
+--
+Cars: [Car]
+--
+create_spots(self)
+load_cars(self, source_file): [Cars]
+draw_board(self)
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>410</x><y>50</y><w>170</w><h>200</h></coordinates><panel_attributes>Car
+--
+Name: Char
+Orientation: Boolean
+Row: Integer
+Col: Integer
+Length: Integer
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>160</x><y>270</y><w>160</w><h>160</h></coordinates><panel_attributes>Game
+--
+
+--
+move(self, car, direction): boolean
+win(self): boolean</panel_attributes><additional_attributes></additional_attributes></element></diagram>
