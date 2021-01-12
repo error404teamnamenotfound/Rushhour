@@ -1,4 +1,5 @@
 import csv
+import matplotlib.pyplot as plt
 import numpy as np
 import re
 import time
@@ -77,3 +78,5 @@ class Board():
             for block in row:
                 print(f"{block} ", end="")
             print("")
+        # plt.matshow(ord(self.layout))
+        # plt.show()
