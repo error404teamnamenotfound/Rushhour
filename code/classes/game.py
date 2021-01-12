@@ -50,54 +50,6 @@ class Game():
                     pass
 
         return moves
-        # # create new move list
-        # moves = []
-        
-        # # loop over cars on board
-        # for car in self.board.cars:
-        #     row = car.row
-        #     col = car.col
-
-        #     # check for empty spaces left and right from horizontal car
-        #     if car.orientation == 'H':
-        #         if self.board.layout[row][col - 1] == '_' and col != 0:
-        #             moves.append([car, 'l'])
-
-        #         # prevent border error with try/except
-        #         try:
-        #             if self.board.layout[row][col + car.length] == '_':
-        #                 moves.append([car, 'r'])
-        #         except IndexError:
-        #             pass
-
-        #     # check for empty spaces up and down from vertical car
-        #     if car.orientation == 'V':
-        #         if self.board.layout[row - 1][col] == '_' and row != 0:
-        #             moves.append([car, 'u'])
-
-        #         # prevent border error
-        #         try:
-        #             if self.board.layout[row + car.length][col] == '_':
-        #                 moves.append([car, 'd'])
-        #         except IndexError:
-        #             pass
-
-        # return moves
-
-    # def move(self, choice):
-    #     """
-    #     Moves car based on random move from list of valid moves.
-    #     """
-
-    #     # move car based on direction; change coordinates of car
-    #     if choice[1] == 'l':
-    #         choice[0].col -= 1
-    #     elif choice[1] == 'r':
-    #         choice[0].col += 1
-    #     elif choice[1] == 'u':
-    #         choice[0].row -= 1
-    #     elif choice[1] == 'd':
-    #         choice[0].row += 1
 
     def win(self):
         """

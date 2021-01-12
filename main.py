@@ -10,9 +10,14 @@ from code.classes.game import Game
 if __name__ == '__main__':
 
     # initialize list for moves
-    with open('output.csv', 'r') as outputfile:
-        next(outputfile)
-        best_moves = outputfile.readlines()
+    # try:
+    #     with open('output.csv', 'r') as outputfile:
+    #         next(outputfile)
+    #         best_moves = outputfile.readlines()
+    # except FileNotFoundError:
+    
+    # QUICK FIX, TODO
+    best_moves = [["_"] for i in range(10000)]
 
     # play game untill interrupted with ctrl-c
     try:
@@ -36,8 +41,14 @@ if __name__ == '__main__':
                 choice[0].move(choice[1])
                 game.board.create_layout()
                 #game.board.draw_board()
-                moves.append([choice[0].name, choice[1]])
-                #time.sleep(0.3)
+
+                # add move to list of moves
+                if moves and [choice[0].name, choice[1]] == moves[-1]:
+                    moves[-1][1] += choice[1]
+                else:
+                    moves.append([choice[0].name, choice[1]])
+                
+                #time.sleep(0.1)
 
             # draw final board
             game.board.draw_board()
@@ -60,6 +71,7 @@ if __name__ == '__main__':
     except KeyboardInterrupt:
         
         # write output
+        # TODO board name in output file name
         with open('output.csv', 'w', newline='') as outputfile:
             fieldnames = ['car', 'move']
             writer = csv.writer(outputfile)
