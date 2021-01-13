@@ -16,7 +16,7 @@ if __name__ == '__main__':
     try:
         while True:
             # create new game
-            game = Game('data/Rushhour12x12_7.csv')
+            game = Game('data/Rushhour9x9_4.csv')
 
             # draw first board
             game.board.draw_board()
