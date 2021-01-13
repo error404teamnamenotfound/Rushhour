@@ -30,11 +30,12 @@ class Game():
             if car.orientation == 'H':
                 if self.board.layout[row][col - 1] == '_' and col != 0:
                     moves.append([car, -1])
-
+                        
                 # prevent border error with try/except
                 try:
                     if self.board.layout[row][col + car.length] == '_':
                         moves.append([car, 1])
+  
                 except IndexError:
                     pass
 
@@ -42,11 +43,12 @@ class Game():
             if car.orientation == 'V':
                 if self.board.layout[row - 1][col] == '_' and row != 0:
                     moves.append([car, -1])
-
+                   
                 # prevent border error
                 try:
                     if self.board.layout[row + car.length][col] == '_':
                         moves.append([car, 1])
+
                 except IndexError:
                     pass
 
