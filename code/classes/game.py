@@ -11,6 +11,7 @@ class Game():
     """
     def __init__(self, source_file):
         self.board = Board(source_file)
+        self.moves = []
     
     def find_moves(self):
         """
@@ -51,6 +52,23 @@ class Game():
 
         return moves
 
+    def move(self, choice):
+
+        car = choice[0]
+        direction = choice[1]
+
+        # set new coordinates for moved car
+        if car.orientation == 'H':
+            car.col += direction
+        elif car.orientation == 'V':
+            car.row += direction
+
+        # add move to list of moves (if latest move is same, just add 1 to move)
+        if self.moves and [car.name, direction] == self.moves[-1]:
+            self.moves[-1][1] += direction
+        else:
+            self.moves.append([car.name, direction])
+
     def win(self):
         """
         Returns true and prints success if red car (XX) is at exit.
@@ -66,6 +84,11 @@ class Game():
 
         # check if X is on exit or the row towards exit is empty
         if self.board.layout[row_e][col_e] == 'X' or all(self.board.layout[row_e][col_x:] == '_'):
+
+            # add last moves of X to moves list
+            moves_left = self.board.size - col_x
+            self.moves.append(['X', moves_left])
+
             print("success")
             return True
 
