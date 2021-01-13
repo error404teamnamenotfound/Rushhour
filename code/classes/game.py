@@ -49,6 +49,8 @@ class Game():
                 except IndexError:
                     pass
 
+        print(moves)
+        
         return moves
 
     def move(self):

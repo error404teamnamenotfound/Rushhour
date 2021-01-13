@@ -8,7 +8,7 @@ from code.classes.game import Game
 if __name__ == '__main__':
 
     # create new game
-    test = Game('data/Rushhour12x12_7.csv')
+    test = Game('data/Rushhour6x6_1.csv')
 
     # keep track of moves
     moves = 0
