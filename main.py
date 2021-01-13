@@ -1,17 +1,14 @@
 import csv
 import time
-# import matplotlib.pyplot as plt
-# import matplotlib
 
 from code.algorithms.random import random_move
 from code.classes.board import Board
 from code.classes.car import Car
 from code.classes.game import Game
-from code.visualisation.visualisation import draw_board
 
 
 if __name__ == '__main__':
-    
+
     # initialize best moves list
     best_moves = [None] * 100000
 
@@ -58,7 +55,7 @@ if __name__ == '__main__':
                 #     moves[-1][1] += choice[1]
                 # else:
                 #     moves.append([choice[0].name, choice[1]])
-                
+
                 #game.board.draw_board()
                 #time.sleep(0.1)
 
@@ -84,11 +81,10 @@ if __name__ == '__main__':
                 writer.writerows(best_moves)
 
     except KeyboardInterrupt:
-                    
+
     # write output
         with open('output.csv', 'w', newline='') as outputfile:
             fieldnames = ['car', 'move']
             writer = csv.writer(outputfile)
             writer.writerow(fieldnames)
             writer.writerows(best_moves)
-

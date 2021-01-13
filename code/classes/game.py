@@ -12,15 +12,15 @@ class Game():
     def __init__(self, source_file):
         self.board = Board(source_file)
         self.moves = []
-    
+
     def find_moves(self):
         """
         Creates list of possible moves.
         """
 
         # create new move list
-        moves = []
-        
+        valid_moves = []
+
         # loop over cars on board
         for car in self.board.cars:
             row = car.row
@@ -29,30 +29,28 @@ class Game():
             # check for empty spaces left and right from horizontal car
             if car.orientation == 'H':
                 if self.board.layout[row][col - 1] == '_' and col != 0:
-                    moves.append([car, -1])
-                        
+                    valid_moves.append([car, -1])
+
                 # prevent border error with try/except
                 try:
                     if self.board.layout[row][col + car.length] == '_':
-                        moves.append([car, 1])
-  
+                        valid_moves.append([car, 1])
                 except IndexError:
                     pass
 
             # check for empty spaces up and down from vertical car
             if car.orientation == 'V':
                 if self.board.layout[row - 1][col] == '_' and row != 0:
-                    moves.append([car, -1])
-                   
+                    valid_moves.append([car, -1])
+
                 # prevent border error
                 try:
                     if self.board.layout[row + car.length][col] == '_':
-                        moves.append([car, 1])
-
+                        valid_moves.append([car, 1])
                 except IndexError:
                     pass
 
-        return moves
+        return valid_moves
 
     def move(self, choice):
 

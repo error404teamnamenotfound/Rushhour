@@ -71,12 +71,10 @@ class Board():
         """
 
         # clear screen for new board
-        #print("\033[H\033[J")
+        print("\033[H\033[J")
 
         # print new board
         for row in self.layout:
             for block in row:
                 print(f"{block} ", end="")
             print("")
-        # plt.matshow(ord(self.layout))
-        # plt.show()
