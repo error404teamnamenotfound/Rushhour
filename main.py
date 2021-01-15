@@ -1,7 +1,7 @@
 import csv
 import time
 
-from code.algorithms.random import random_move
+from code.algorithms.random import Randomise
 from code.classes.board import Board
 from code.classes.car import Car
 from code.classes.game import Game
@@ -10,6 +10,15 @@ from code.algorithms.bfs import BreadthFirst
 
 
 if __name__ == '__main__':
+
+
+    algoritme_choice = ('Choose an algorithm: Randomise, BreadthFirst')
+    algorithms = { 
+        "Randomise" : Randomise,
+        "BreadtFirst" : BreadthFirst
+    }
+
+    algorithms[algoritme_choice]
 
     bfs = BreadthFirst('data/Rushhour6x6_1.csv')
     moves_set = bfs.run()

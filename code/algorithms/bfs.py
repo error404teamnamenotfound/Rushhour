@@ -12,10 +12,10 @@ class BreadthFirst():
     
     def run(self):
 
-        while True:
+        # keeps looping until all possible moves have been checked
+        while self.queue:
 
-            if len(self.queue) % 1000 == 0:
-                print(len(self.queue[-1]))
+            # print(len(self.queue[-1]))
 
             # get first move from queue
             moves_set = self.queue.pop(0)
@@ -26,7 +26,7 @@ class BreadthFirst():
 
             # create new layout
             self.game.board.create_layout()
-            
+
             # check for win
             if self.game.win():
                 

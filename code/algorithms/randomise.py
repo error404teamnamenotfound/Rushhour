@@ -1,5 +1,7 @@
 import random
 
+class Randomise():
+    """ random algorithm """
 
 def random_move(moves_list):
     
