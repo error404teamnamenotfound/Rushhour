@@ -3,7 +3,6 @@ import random
 
 from code.classes.board import Board
 
-
 class Game():
     """
     Creates game object to play Rush Hour. Checks for possible moves,
@@ -13,13 +12,16 @@ class Game():
         self.board = Board(source_file)
         self.moves = []
 
-    def find_moves(self):
+    def find_moves(self, last_move):
         """
         Creates list of possible moves.
         """
 
         # create new move list
         valid_moves = []
+
+        no_move = last_move
+        no_move[1] = -no_move[1]
 
         # loop over cars on board
         for car in self.board.cars:
@@ -28,27 +30,42 @@ class Game():
 
             # check for empty spaces left and right from horizontal car
             if car.orientation == 'H':
-                if self.board.layout[row][col - 1] == '_' and col != 0:
-                    valid_moves.append([car, -1])
+                for i in range(car.col):
+                    if self.board.layout[row][col -1 - i] == '_' and col - i != 0:
+                        valid_moves.append([car, -1 - i])
+                    else:
+                        break
 
                 # prevent border error with try/except
                 try:
-                    if self.board.layout[row][col + car.length] == '_':
-                        valid_moves.append([car, 1])
+                    for i in range(self.board.size - car.length - car.col):
+                        if self.board.layout[row][col + car.length + i] == '_':
+                            valid_moves.append([car, 1 + i])
+                        else:
+                            break
                 except IndexError:
                     pass
 
             # check for empty spaces up and down from vertical car
             if car.orientation == 'V':
-                if self.board.layout[row - 1][col] == '_' and row != 0:
-                    valid_moves.append([car, -1])
-
-                # prevent border error
+                for i in range(car.row):
+                    if self.board.layout[row - 1 - i][col] == '_' and row - i != 0:
+                        valid_moves.append([car, -1 - i])
+                    else:
+                        break
+                
+                # prevent border error with try/except
                 try:
-                    if self.board.layout[row + car.length][col] == '_':
-                        valid_moves.append([car, 1])
+                    for i in range(self.board.size - car.length - car.row):
+                        if self.board.layout[row + car.length + i][col] == '_':
+                            valid_moves.append([car, 1 + i])
+                        else:
+                            break
                 except IndexError:
                     pass
+                
+        if no_move in valid_moves:
+            valid_moves.remove(no_move)
 
         return valid_moves
 

@@ -6,85 +6,99 @@ from code.classes.board import Board
 from code.classes.car import Car
 from code.classes.game import Game
 
+from code.algorithms.bfs import BreadthFirst
+
 
 if __name__ == '__main__':
 
-    # initialize best moves list
-    best_moves = [None] * 100000
+    bfs = BreadthFirst('data/Rushhour6x6_1.csv')
+    moves_set = bfs.run()
 
-    # play game untill interrupted with ctrl-c
-    try:
-        while True:
-            # create new game
-            game = Game('data/Rushhour6x6_2.csv')
+    with open('output.csv', 'w', newline='') as outputfile:
+        fieldnames = ['car', 'move']
+        writer = csv.writer(outputfile)
+        writer.writerow(fieldnames)
+        writer.writerows(moves_set)
+    
+    print(moves_set)
 
-            # keep track of moves
-            # moves = []
 
-            # draw first board
-            # draw_board(game.board.layout)
-            # matrix = [[ord(char) for char in row] for row in game.board.layout]
+    # # initialize best moves list
+    # best_moves = [None] * 100000
 
-            # matplotlib.rcParams['backend'] = 'TkAgg'
-            # print(matplotlib.rcParams['backend'])
+    # # play game untill interrupted with ctrl-c
+    # try:
+    #     while True:
+    #         # create new game
+    #         game = Game('data/Rushhour12x12_7.csv')
 
-            # print(matrix)
+    #         # draw first board
+    #         # draw_board(game.board.layout)
+    #         # matrix = [[ord(char) for char in row] for row in game.board.layout]
 
-            # #fig = plt.figure()
-            # plt.matshow(matrix)
-            # plt.show()
+    #         # matplotlib.rcParams['backend'] = 'TkAgg'
+    #         # print(matplotlib.rcParams['backend'])
 
-            # keep track of time
-            t0 = time.perf_counter()
+    #         # print(matrix)
 
-            # make random moves until win
-            while not game.win() and len(game.moves) <= len(best_moves):
+    #         # #fig = plt.figure()
+    #         # plt.matshow(matrix)
+    #         # plt.show()
 
-                # find possible moves
-                moves_list = game.find_moves()
+    #         # keep track of time
+    #         t0 = time.perf_counter()
 
-                # use random algorithm to choose moves
-                choice = random_move(moves_list)
+    #         last_move = [None, 0]
 
-                # move car and create new layout
-                game.move(choice)
-                game.board.create_layout()
+    #         # make random moves until win
+    #         while not game.win() and len(game.moves) <= len(best_moves):
 
-                # # add move to list of moves (if latest move is same, just add 1 to move)
-                # if moves and [choice[0].name, choice[1]] == moves[-1]:
-                #     moves[-1][1] += choice[1]
-                # else:
-                #     moves.append([choice[0].name, choice[1]])
+    #             # find possible moves
+    #             moves_list = game.find_moves(last_move)
 
-                #game.board.draw_board()
-                #time.sleep(0.1)
+    #             # use random algorithm to choose moves
+    #             choice = random_move(moves_list)
 
-            # draw final board
-            game.board.draw_board()
+    #             last_move = choice
+    #             # move car and create new layout
+    #             game.move(choice)
+    #             game.board.create_layout()
 
-            # stop time
-            t1 = time.perf_counter() - t0
+    #             # # add move to list of moves (if latest move is same, just add 1 to move)
+    #             # if moves and [choice[0].name, choice[1]] == moves[-1]:
+    #             #     moves[-1][1] += choice[1]
+    #             # else:
+    #             #     moves.append([choice[0].name, choice[1]])
 
-            # print number of played moves, time elapsed and speed
-            print(f"{len(game.moves)} in {t1:.2f} s")
-            print(f"{len(game.moves)/t1:.1f} moves/s")
+    #             #game.board.draw_board()
+    #             #time.sleep(0.1)
 
-            # update best moves list when new list is smaller
-            if len(game.moves) < len(best_moves):
-                best_moves = game.moves
+    #         # draw final board
+    #         game.board.draw_board()
 
-            # write output
-            with open('output.csv', 'w', newline='') as outputfile:
-                fieldnames = ['car', 'move']
-                writer = csv.writer(outputfile)
-                writer.writerow(fieldnames)
-                writer.writerows(best_moves)
+    #         # stop time
+    #         t1 = time.perf_counter() - t0
 
-    except KeyboardInterrupt:
+    #         # print number of played moves, time elapsed and speed
+    #         print(f"{len(game.moves)} in {t1:.2f} s")
+    #         print(f"{len(game.moves)/t1:.1f} moves/s")
 
-    # write output
-        with open('output.csv', 'w', newline='') as outputfile:
-            fieldnames = ['car', 'move']
-            writer = csv.writer(outputfile)
-            writer.writerow(fieldnames)
-            writer.writerows(best_moves)
+    #         # update best moves list when new list is smaller
+    #         if len(game.moves) < len(best_moves):
+    #             best_moves = game.moves
+
+    #         # # write output
+    #         # with open('output.csv', 'w', newline='') as outputfile:
+    #         #     fieldnames = ['car', 'move']
+    #         #     writer = csv.writer(outputfile)
+    #         #     writer.writerow(fieldnames)
+    #         #     writer.writerows(best_moves)
+
+    # except KeyboardInterrupt:
+
+    # # write output
+    #     with open('output.csv', 'w', newline='') as outputfile:
+    #         fieldnames = ['car', 'move']
+    #         writer = csv.writer(outputfile)
+    #         writer.writerow(fieldnames)
+    #         writer.writerows(best_moves)
