@@ -10,7 +10,7 @@ class Game():
     """
     def __init__(self, source_file):
         self.board = Board(source_file)
-        self.moves = []
+        #self.moves = []
 
     def find_moves(self, last_move):
         """
@@ -20,11 +20,15 @@ class Game():
         # create new move list
         valid_moves = []
 
-        no_move = last_move
-        no_move[1] = -no_move[1]
+        # no_move = last_move
+        # no_move[1] = -no_move[1]
 
         # loop over cars on board
-        for car in self.board.cars:
+        for car in self.board.cars.values():
+
+            if car.name == last_move[0]:
+                continue
+
             row = car.row
             col = car.col
 
@@ -32,7 +36,7 @@ class Game():
             if car.orientation == 'H':
                 for i in range(car.col):
                     if self.board.layout[row][col -1 - i] == '_' and col - i != 0:
-                        valid_moves.append([car, -1 - i])
+                        valid_moves.append([car.name, -1 - i])
                     else:
                         break
 
@@ -40,7 +44,7 @@ class Game():
                 try:
                     for i in range(self.board.size - car.length - car.col):
                         if self.board.layout[row][col + car.length + i] == '_':
-                            valid_moves.append([car, 1 + i])
+                            valid_moves.append([car.name, 1 + i])
                         else:
                             break
                 except IndexError:
@@ -50,7 +54,7 @@ class Game():
             if car.orientation == 'V':
                 for i in range(car.row):
                     if self.board.layout[row - 1 - i][col] == '_' and row - i != 0:
-                        valid_moves.append([car, -1 - i])
+                        valid_moves.append([car.name, -1 - i])
                     else:
                         break
                 
@@ -58,20 +62,20 @@ class Game():
                 try:
                     for i in range(self.board.size - car.length - car.row):
                         if self.board.layout[row + car.length + i][col] == '_':
-                            valid_moves.append([car, 1 + i])
+                            valid_moves.append([car.name, 1 + i])
                         else:
                             break
                 except IndexError:
                     pass
                 
-        if no_move in valid_moves:
-            valid_moves.remove(no_move)
+        # if no_move in valid_moves:
+        #     valid_moves.remove(no_move)
 
         return valid_moves
 
     def move(self, choice):
 
-        car = choice[0]
+        car = self.board.cars[choice[0]]
         direction = choice[1]
 
         # set new coordinates for moved car
@@ -81,10 +85,10 @@ class Game():
             car.row += direction
 
         # add move to list of moves (if latest move is same, just add 1 to move)
-        if self.moves and [car.name, direction] == self.moves[-1]:
-            self.moves[-1][1] += direction
-        else:
-            self.moves.append([car.name, direction])
+        # if self.moves and [car, direction] == self.moves[-1]:
+        #     self.moves[-1][1] += direction
+        # else:
+        #     self.moves.append(choice)
 
     def win(self):
         """
@@ -93,18 +97,19 @@ class Game():
         """
 
         # get column right of red car
-        col_x = [car.col + 2 for car in self.board.cars if car.name == 'X'][0]
+        col_x = self.board.cars['X'].col
+        # col_x = [car.col + 2 for car in self.board.cars if car.name == 'X'][0]
 
         # get coordinates of exit
-        row_e = math.ceil(self.board.size / 2) - 1
+        row_e = math.floor(self.board.size / 2) - 1
         col_e = self.board.size - 1
 
         # check if X is on exit or the row towards exit is empty
-        if self.board.layout[row_e][col_e] == 'X' or all(self.board.layout[row_e][col_x:] == '_'):
+        if self.board.layout[row_e][col_e] == 'X': #or all(self.board.layout[row_e][col_x:] == '_')
 
             # add last moves of X to moves list
-            moves_left = self.board.size - col_x
-            self.moves.append(['X', moves_left])
+            # moves_left = self.board.size - col_x
+            # self.moves.append(['X', moves_left])
 
             print("success")
             return True
