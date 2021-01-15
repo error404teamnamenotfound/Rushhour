@@ -8,19 +8,23 @@ from code.classes.game import Game
 
 from code.algorithms.bfs import BreadthFirst
 
+from code.visualisation.visualisation import visualize
+
 
 if __name__ == '__main__':
 
-    bfs = BreadthFirst('data/Rushhour6x6_1.csv')
-    moves_set = bfs.run()
+    # bfs = BreadthFirst('data/Rushhour6x6_1.csv')
+    # moves_set = bfs.run()
 
-    with open('output.csv', 'w', newline='') as outputfile:
-        fieldnames = ['car', 'move']
-        writer = csv.writer(outputfile)
-        writer.writerow(fieldnames)
-        writer.writerows(moves_set)
+    # with open('output.csv', 'w', newline='') as outputfile:
+    #     fieldnames = ['car', 'move']
+    #     writer = csv.writer(outputfile)
+    #     writer.writerow(fieldnames)
+    #     writer.writerows(moves_set)
     
-    print(moves_set)
+    # print(moves_set)
+
+    visualize('data/Rushhour6x6_1.csv', 'output/output_1_bsf.csv')
 
 
     # # initialize best moves list
