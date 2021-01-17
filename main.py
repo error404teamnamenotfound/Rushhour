@@ -9,7 +9,7 @@ from code.classes.game import Game
 
 from code.algorithms.bfs import BreadthFirst
 
-# from code.visualisation.visualisation import visualize
+from code.visualisation.visualisation import visualize
 
 
 if __name__ == '__main__':
