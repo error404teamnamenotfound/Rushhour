@@ -1,35 +1,46 @@
 import csv
 import time
+import sys 
 
-from code.algorithms.random import Randomise
+from code.algorithms.randomise import Randomise
 from code.classes.board import Board
 from code.classes.car import Car
 from code.classes.game import Game
 
 from code.algorithms.bfs import BreadthFirst
 
+# from code.visualisation.visualisation import visualize
+
 
 if __name__ == '__main__':
 
-
-    algoritme_choice = ('Choose an algorithm: Randomise, BreadthFirst')
-    algorithms = { 
-        "Randomise" : Randomise,
-        "BreadtFirst" : BreadthFirst
+    try:
+        algorithm_choice = sys.argv[1]
+        board_choice = sys.argv[2]
+    except: 
+        algorithm_choice = BreadthFirst
+        board_choice = '6x6_1'
+    
+    algorithms = {
+    "Randomise" : Randomise,
+    "BreadthFirst" : BreadthFirst
     }
 
-    algorithms[algoritme_choice]
-
-    bfs = BreadthFirst('data/Rushhour6x6_1.csv')
-    moves_set = bfs.run()
-
-    with open('output.csv', 'w', newline='') as outputfile:
-        fieldnames = ['car', 'move']
-        writer = csv.writer(outputfile)
-        writer.writerow(fieldnames)
-        writer.writerows(moves_set)
+    algorithms[algorithm_choice](f'data/Rushhour{board_choice}.csv').run()
     
-    print(moves_set)
+
+    # bfs = BreadthFirst('data/Rushhour6x6_1.csv')
+    # moves_set = bfs.run()
+
+    # with open('output.csv', 'w', newline='') as outputfile:
+    #     fieldnames = ['car', 'move']
+    #     writer = csv.writer(outputfile)
+    #     writer.writerow(fieldnames)
+    #     writer.writerows(moves_set)
+    
+    # print(moves_set)
+
+    # visualize('data/Rushhour6x6_1.csv', 'output/output_1_bsf.csv')
 
 
     # # initialize best moves list
@@ -88,9 +99,9 @@ if __name__ == '__main__':
     #         # stop time
     #         t1 = time.perf_counter() - t0
 
-    #         # print number of played moves, time elapsed and speed
-    #         print(f"{len(game.moves)} in {t1:.2f} s")
-    #         print(f"{len(game.moves)/t1:.1f} moves/s")
+            # # print number of played moves, time elapsed and speed
+            # print(f"{len(game.moves)} in {t1:.2f} s")
+            # print(f"{len(game.moves)/t1:.1f} moves/s")
 
     #         # update best moves list when new list is smaller
     #         if len(game.moves) < len(best_moves):

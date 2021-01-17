@@ -28,8 +28,8 @@ class Board():
         Creates list of Car objects from data in source file.
         """
 
-        # create empty list for Car objects
-        cars_list = []
+        # create empty dict for Car objects
+        cars_dict = {}
 
         # open source file
         with open(source_file, "r") as reader:
@@ -41,9 +41,9 @@ class Board():
             # create Car objects per data row
             for row in datafile:
                 car = Car(row[0], row[1], row[2], row[3], row[4])
-                cars_list.append(car)
+                cars_dict[car.name] = car
 
-        return cars_list
+        return cars_dict
 
     def create_layout(self):
         """
@@ -55,7 +55,7 @@ class Board():
         self.layout[:] = '_'
 
         # place cars on board horizonally (H) or vertically (V)
-        for car in self.cars:
+        for car in self.cars.values():
             if car.orientation == "H":
 
                 # place as many letters on board as car length
