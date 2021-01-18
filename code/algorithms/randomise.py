@@ -3,8 +3,6 @@ import random
 class Randomise():
     """ random algorithm """
 
-    def __init__(self):
-    
     def run(self):
             
         # initialize best moves list

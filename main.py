@@ -14,19 +14,19 @@ from code.visualisation.visualisation import visualize
 
 if __name__ == '__main__':
 
-    try:
-        algorithm_choice = sys.argv[1]
-        board_choice = sys.argv[2]
-    except: 
-        algorithm_choice = BreadthFirst
-        board_choice = '6x6_1'
+    # try:
+    #     algorithm_choice = sys.argv[1]
+    #     board_choice = sys.argv[2]
+    # except: 
+    #     algorithm_choice = BreadthFirst
+    #     board_choice = '6x6_1'
     
-    algorithms = {
-    "Randomise" : Randomise,
-    "BreadthFirst" : BreadthFirst
-    }
+    # algorithms = {
+    # "Randomise" : Randomise,
+    # "BreadthFirst" : BreadthFirst
+    # }
 
-    algorithms[algorithm_choice](f'data/Rushhour{board_choice}.csv').run()
+    # algorithms[algorithm_choice](f'data/Rushhour{board_choice}.csv').run()
     
 
     # bfs = BreadthFirst('data/Rushhour6x6_1.csv')
@@ -40,7 +40,7 @@ if __name__ == '__main__':
     
     # print(moves_set)
 
-    # visualize('data/Rushhour6x6_1.csv', 'output/output_1_bsf.csv')
+    visualize('data/Rushhour6x6_1.csv', 'output/output_1_bsf.csv')
 
 
     # # initialize best moves list
