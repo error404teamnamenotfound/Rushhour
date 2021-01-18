@@ -26,7 +26,7 @@ def visualize(sourcefile, outputfile):
     #matrix = np.array([[row - 64] for row in game.board.layout])
     matrix = np.array([[ord(letter) - 64 for letter in row] for row in game.board.layout])
     indices = np.where(matrix == 31)
-    matrix[indices] = red
+    matrix[indices] = 18
 
     indices = np.where(matrix == 24)
     matrix[indices] = 19
