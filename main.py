@@ -2,43 +2,46 @@ import csv
 import time
 import sys 
 
-from code.algorithms.randomise import Randomise
 from code.classes.board import Board
 from code.classes.car import Car
 from code.classes.game import Game
 
 from code.algorithms.bfs import BreadthFirst
+from code.algorithms.randomise import Randomise
 
 from code.visualisation.visualisation import visualize
 
 
 if __name__ == '__main__':
 
-    try:
-        algorithm_choice = sys.argv[1]
-        board_choice = sys.argv[2]
-    except: 
-        algorithm_choice = BreadthFirst
-        board_choice = '6x6_1'
-    
-    algorithms = {
-    "Randomise" : Randomise,
-    "BreadthFirst" : BreadthFirst
-    }
+#     algorithm = Randomise('data/Rushhour6x6_1.csv')
+#     moves_list = algorithm.run()
 
-    algorithms[algorithm_choice](f'data/Rushhour{board_choice}.csv').run()
+    # try:
+    #     algorithm_choice = sys.argv[1]
+    #     board_choice = sys.argv[2]
+    # except: 
+    #     algorithm_choice = BreadthFirst
+    #     board_choice = '6x6_1'
+    
+    # algorithms = {
+    # "Randomise" : Randomise,
+    # "BreadthFirst" : BreadthFirst
+    # }
+
+    # algorithms[algorithm_choice](f'data/Rushhour{board_choice}.csv').run()
     
 
-    # bfs = BreadthFirst('data/Rushhour6x6_1.csv')
-    # moves_set = bfs.run()
+    bfs = BreadthFirst('data/Rushhour9x9_4.csv')
+    moves_set = bfs.run()
 
-    # with open('output.csv', 'w', newline='') as outputfile:
-    #     fieldnames = ['car', 'move']
-    #     writer = csv.writer(outputfile)
-    #     writer.writerow(fieldnames)
-    #     writer.writerows(moves_set)
+    with open('output.csv', 'w', newline='') as outputfile:
+        fieldnames = ['car', 'move']
+        writer = csv.writer(outputfile)
+        writer.writerow(fieldnames)
+        writer.writerows(moves_set)
     
-    # print(moves_set)
+    print(moves_set)
 
     # visualize('data/Rushhour6x6_1.csv', 'output/output_1_bsf.csv')
 
