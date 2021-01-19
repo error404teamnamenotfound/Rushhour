@@ -67,10 +67,6 @@ class Game():
                             break
                 except IndexError:
                     pass
-                
-        # if no moves possible, run again without last move
-        if not valid_moves:
-            valid_moves = self.find_moves([None, 0])
 
         return valid_moves
 

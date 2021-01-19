@@ -73,6 +73,10 @@ class Randomise():
             # find possible moves
             valid_moves = game.find_moves(last_move)
 
+            # if no moves possible, run again without last move
+            if not valid_moves:
+                valid_moves = game.find_moves([None, 0])
+
             # use random algorithm to choose moves
             choice = self.random_move(valid_moves)
 
