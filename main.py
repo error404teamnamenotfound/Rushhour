@@ -14,9 +14,6 @@ from code.visualisation.visualisation import visualize
 
 if __name__ == '__main__':
 
-#     algorithm = Randomise('data/Rushhour6x6_1.csv')
-#     moves_list = algorithm.run()
-
     # try:
     #     algorithm_choice = sys.argv[1]
     #     board_choice = sys.argv[2]
@@ -43,7 +40,7 @@ if __name__ == '__main__':
     
     print(moves_set)
 
-    # visualize('data/Rushhour6x6_1.csv', 'output/output_1_bsf.csv')
+    visualize('data/Rushhour6x6_1.csv', 'output/output_1_bsf.csv')
 
 
     # # initialize best moves list
