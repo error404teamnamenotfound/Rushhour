@@ -98,7 +98,7 @@ class Game():
         # col_x = [car.col + 2 for car in self.board.cars if car.name == 'X'][0]
 
         # get coordinates of exit
-        row_e = math.floor(self.board.size / 2) - 1
+        row_e = math.ceil(self.board.size / 2) - 1
         col_e = self.board.size - 1
 
         # check if X is on exit or the row towards exit is empty

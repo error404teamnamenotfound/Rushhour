@@ -75,7 +75,7 @@ def visualize(sourcefile, outputfile):
         # cmap = matplotlib.cm.hot
 
         # cmap.set_bad(color='red', alpha=None)
-        print(matrix)
+
         im = plt.imshow(matrix, animated=True, cmap='Reds')
         ims.append([im])
 

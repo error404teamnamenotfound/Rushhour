@@ -29,7 +29,7 @@ class BreadthFirst():
         """
 
         # find new possible moves
-        new_moves = self.game.find_moves(copy.deepcopy(moves_set[-1]))
+        new_moves = self.game.find_moves(moves_set[-1])
 
         # add new moves series to queue
         for new_move in new_moves:
@@ -74,11 +74,11 @@ class BreadthFirst():
 
                 # add new moves sets to queue
                 self.add_to_queue(moves_set)
-            
             # first go back to original layout
             moves_set.reverse()
 
             for choice in moves_set:
                 self.game.move([choice[0], -choice[1]])
+
             
 
