@@ -29,7 +29,7 @@ if __name__ == '__main__':
     # algorithms[algorithm_choice](f'data/Rushhour{board_choice}.csv').run()
     
 
-    bfs = BreadthFirst('data/Rushhour6x6_3.csv')
+    bfs = BreadthFirst('data/Rushhour9x9_4.csv')
     moves_set = bfs.run()
 
     with open('output.csv', 'w', newline='') as outputfile:

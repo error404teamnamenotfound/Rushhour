@@ -5,7 +5,7 @@ import copy
 class BreadthFirst():
     def __init__(self, sourcefile):
         self.game = Game(sourcefile)
-        self.archive = [] # keep track of all visited nodes
+        self.archive = {} # keep track of all visited nodes
         last_move = [None, 0]
         self.queue = [[move] for move in self.game.find_moves(last_move)]
         #self.queue = [[['A', -2], ['B', -2], ['C', -1], ['D', -1], ['G', -2], ['H', -1], ['F', 2], ['X', -1], ['K', -2], ['I', -3], ['L', -3], ['K', 2], ['F', -1], ['H', 3], ['X', 3]]]
@@ -67,13 +67,19 @@ class BreadthFirst():
                 return moves_set
 
             # continue if layout is not in archive
-            if not any(np.array_equal(self.game.board.layout, old) for old in self.archive):
+            if self.game.board.layout.tobytes() not in self.archive:
 
-                # save layout in archive
-                self.archive.append(self.game.board.layout)
-
-                # add new moves sets to queue
+                self.archive[self.game.board.layout.tobytes()] = self.game.board.layout
+                
                 self.add_to_queue(moves_set)
+
+            # if not any(np.array_equal(self.game.board.layout, old) for old in self.archive):
+
+            #     # save layout in archive
+            #     self.archive.append(self.game.board.layout)
+
+            #     # add new moves sets to queue
+            #     self.add_to_queue(moves_set)
             # first go back to original layout
             moves_set.reverse()
 
