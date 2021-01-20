@@ -26,7 +26,7 @@ def visualize(sourcefile, outputfile):
     #matrix = np.array([[row - 64] for row in game.board.layout])
     matrix = np.array([[ord(letter) - 64 for letter in row] for row in game.board.layout])
     indices = np.where(matrix == 31)
-    matrix[indices] = 18
+    matrix[indices] = 0
 
     indices = np.where(matrix == 24)
     matrix[indices] = 19
@@ -79,5 +79,5 @@ def visualize(sourcefile, outputfile):
         im = plt.imshow(matrix, animated=True, cmap='Reds')
         ims.append([im])
 
-    ani = animation.ArtistAnimation(fig, ims, interval=900, blit=True, repeat_delay=10000)
+    ani = animation.ArtistAnimation(fig, ims, interval=400, blit=True, repeat_delay=10000)
     ani.save(f'{outputfile}.gif')
