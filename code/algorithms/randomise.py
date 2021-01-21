@@ -21,27 +21,29 @@ class Randomise():
         """
         Plays games untill interrupted with ctrl-c.
         """
-        for i in range(100):
+        try:
+            while True:
+                # keep track of time
+                t0 = time.perf_counter()
+
+                # play game
+                moves_set = self.play_game()
+
+                # stop time
+                t1 = time.perf_counter() - t0
+
+                # print number of played moves, time elapsed and speed
+                print(f"{len(moves_set)} in {t1:.2f} s")
+                print(f"{len(moves_set)/t1:.1f} moves/s")
+
+                # update best moves list when new list is smaller
+                if len(moves_set) < len(self.best_moves):
+                    self.best_moves = moves_set
             
-            # keep track of time
-            t0 = time.perf_counter()
+        except KeyboardInterrupt:
 
-            # play game
-            moves_set = self.play_game()
-
-            # stop time
-            t1 = time.perf_counter() - t0
-
-            # print number of played moves, time elapsed and speed
-            print(f"{len(moves_set)} in {t1:.2f} s")
-            print(f"{len(moves_set)/t1:.1f} moves/s")
-
-            # update best moves list when new list is smaller
-            if len(moves_set) < len(self.best_moves):
-                self.best_moves = moves_set
-
-        # return best moves list
-        return self.best_moves
+            # return best moves list
+            return self.best_moves
 
     def random_move(self, valid_moves):
         """
