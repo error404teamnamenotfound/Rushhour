@@ -49,7 +49,7 @@ def visualize(sourcefile, outputfile):
 
     # cmap.set_bad(color='red', alpha = None)
 
-    im = plt.imshow(matrix, animated=True, cmap ='Reds')
+    im = plt.imshow(matrix, animated=True, cmap ='cubehelix_r')
     ims.append([im])
 
     # move and add new layout to ims
@@ -76,7 +76,7 @@ def visualize(sourcefile, outputfile):
 
         # cmap.set_bad(color='red', alpha=None)
 
-        im = plt.imshow(matrix, animated=True, cmap='Reds')
+        im = plt.imshow(matrix, animated=True, cmap='terrain_r')
         ims.append([im])
 
     ani = animation.ArtistAnimation(fig, ims, interval=400, blit=True, repeat_delay=10000)
