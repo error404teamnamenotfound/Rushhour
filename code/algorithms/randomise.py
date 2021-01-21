@@ -28,18 +28,18 @@ class Randomise():
                 t0 = time.perf_counter()
 
                 # play game
-                moves_list = self.play_game()
+                moves_set = self.play_game()
 
                 # stop time
                 t1 = time.perf_counter() - t0
 
                 # print number of played moves, time elapsed and speed
-                print(f"{len(moves_list)} in {t1:.2f} s")
-                print(f"{len(moves_list)/t1:.1f} moves/s")
+                print(f"{len(moves_set)} in {t1:.2f} s")
+                print(f"{len(moves_set)/t1:.1f} moves/s")
 
                 # update best moves list when new list is smaller
-                if len(moves_list) < len(self.best_moves):
-                    self.best_moves = moves_list
+                if len(moves_set) < len(self.best_moves):
+                    self.best_moves = moves_set
 
         except KeyboardInterrupt:
 
@@ -64,11 +64,11 @@ class Randomise():
         """
         # initialize game, moves list and last move
         game = self.new_game()
-        moves_list = []
+        moves_set = []
         last_move = [None, 0]
 
         # make random moves until win
-        while not game.win() and len(moves_list) <= len(self.best_moves):
+        while not game.win() and len(moves_set) <= len(self.best_moves):
 
             # find possible moves
             valid_moves = game.find_moves(last_move)
@@ -85,12 +85,12 @@ class Randomise():
             game.board.create_layout()
 
             # append choice to moves list and save as last_move
-            moves_list.append(choice)
+            moves_set.append(choice)
             last_move = choice
         
         #game.board.draw_board()
         
-        return moves_list
+        return moves_set
 
 
 

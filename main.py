@@ -15,8 +15,8 @@ from code.visualisation.visualisation import visualize
 
 if __name__ == '__main__':
 
-    hybrid = Hybrid('data/Rushhour9x9_4.csv', 'output/output_4_468.csv')
-    moves_set = hybrid.run()
+    # hybrid = Hybrid('data/Rushhour9x9_4.csv', 'output/output_4_468.csv')
+    # moves_set = hybrid.run()
 
     # try:
     #     algorithm_choice = sys.argv[1]
@@ -33,6 +33,7 @@ if __name__ == '__main__':
 
     # moves_set = algorithms[algorithm_choice](f'data/Rushhour{board_choice}.csv').run()
     
+    move_set = Randomise('data/Rushhour9x9_4.csv').run()
 
     # bfs = BreadthFirst('data/Rushhour9x9_4.csv')
     # moves_set = bfs.run()
@@ -46,7 +47,7 @@ if __name__ == '__main__':
     # print(moves_set)
 
     #visualize('data/Rushhour6x6_1.csv', 'output/output_1_bsf.csv')
-    visualize('data/Rushhour9x9_4.csv', 'output.csv')
+    # visualize('data/Rushhour9x9_4.csv', 'output.csv')
 
 
     # # initialize best moves list
