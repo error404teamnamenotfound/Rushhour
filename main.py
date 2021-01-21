@@ -35,8 +35,8 @@ if __name__ == '__main__':
         writer.writerow(fieldnames)
         writer.writerows(moves_set)
     
-    # print output
-    print(moves_set)
+    # # print output
+    # print(moves_set)
     
-    # visualize output
-    visualize(f'data/Rushhour{board_choice}.csv', f'output/output{board_choice}_{algorithm_choice}.csv')
+    # # visualize output
+    # visualize(f'data/Rushhour{board_choice}.csv', f'output/output{board_choice}_{algorithm_choice}.csv')

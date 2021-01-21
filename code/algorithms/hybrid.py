@@ -9,14 +9,6 @@ class Hybrid():
         Random = Randomise(sourcefile)
         self.moves_set = Random.run()
 
-        # # read outputfile
-        # with open(outputfile, "r") as reader:
-        #     datafile = csv.reader(reader)
-        #     next(datafile)
-        #     self.moves_set = []
-        #     for row in datafile:
-        #         self.moves_set.append([row[0], int(row[1])])
-
     def run(self):
 
         while True:
