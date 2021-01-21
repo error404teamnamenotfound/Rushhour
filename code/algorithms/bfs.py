@@ -29,6 +29,12 @@ class BreadthFirst():
             self.game.move(choice)
         self.game.board.create_layout()
 
+    def won_game(self):
+        if self.game.win():
+            self.game.board.draw_board()
+            return True
+        return False
+
     def not_in_archive(self):
         """
         Checks if layout is already in archive. If not, adds layout to archive.
@@ -77,10 +83,7 @@ class BreadthFirst():
             self.try_moves(moves_set)
             
             # check for win
-            if self.game.win():
-                
-                # draw final board
-                self.game.board.draw_board()
+            if self.won_game():
 
                 # return winning set of moves
                 return moves_set
