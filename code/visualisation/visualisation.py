@@ -7,6 +7,8 @@ import matplotlib
 from code.classes.game import Game
 
 def visualize(sourcefile, outputfile):
+
+    # initialize figure and images list
     fig = plt.figure()
     ims = []
 
@@ -21,63 +23,28 @@ def visualize(sourcefile, outputfile):
     # create new game
     game = Game(sourcefile)
 
-    # add first board to ims
+    # create first layout
     game.board.create_layout()
-    #matrix = np.array([[row - 64] for row in game.board.layout])
+
+    # change matrix to numbers
     matrix = np.array([[ord(letter) - 64 for letter in row] for row in game.board.layout])
     indices = np.where(matrix == 31)
     matrix[indices] = 0
 
-    indices = np.where(matrix == 24)
-    matrix[indices] = 19
-    # matrix = [[ord(letter) for letter in row] for row in game.board.layout]
-    
-    # print(matrix)
-
-    # matrix = [[[255] for letter in row if letter == 88] for row in game.board.layout]
-
-    # for i in range(len(matrix)):
-    #     for j in range(len(matrix[i])):
-    #         if matrix[i][j] == 88:
-    #             print('X')
-    #             matrix[i][j] = 13
-            
-    # print(matrix)
-
-    # masked_array = np.ma.masked_where(matrix == 88, matrix)
-    # cmap = matplotlib.cm.hot
-
-    # cmap.set_bad(color='red', alpha = None)
-
-    im = plt.imshow(matrix, animated=True, cmap ='cubehelix_r')
+    # create first image
+    im = plt.imshow(matrix, animated=True, cmap ='terrain_r')
     ims.append([im])
 
-    # move and add new layout to ims
+    # move and add new images per layout
     for move in moves_set:
         game.move(move)
         game.board.create_layout()
-        #matrix = [[letter - 64 for letter in row] for row in game.board.layout]
-        # for i in range(len(matrix)):
-        #     for j in range(len(matrix[i])):
-                
-        #         if matrix[i][j] == 88:
-        #             print('X')
-        #             matrix[i][j] = 13
-        #         else: 
-        #             matrix[i][j] -= 64
         matrix = np.array([[ord(letter) - 64 for letter in row] for row in game.board.layout])
         indices = np.where(matrix == 31)
         matrix[indices] = 0
-
-        indices = np.where(matrix == 24)
-        matrix[indices] = 19
-        # masked_array = np.ma.masked_where(matrix == 88, matrix)
-        # cmap = matplotlib.cm.hot
-
-        # cmap.set_bad(color='red', alpha=None)
-
         im = plt.imshow(matrix, animated=True, cmap='terrain_r')
         ims.append([im])
 
+    # create animation
     ani = animation.ArtistAnimation(fig, ims, interval=400, blit=True, repeat_delay=10000)
     ani.save(f'{outputfile}.gif')

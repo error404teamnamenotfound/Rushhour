@@ -67,7 +67,7 @@ class Game():
                             break
                 except IndexError:
                     pass
-
+        
         return valid_moves
 
     def move(self, choice):
