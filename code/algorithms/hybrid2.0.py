@@ -2,29 +2,29 @@ import csv
 from code.classes.game import Game
 from code.algorithms.bfs import BreadthFirst
 
-# MAX = 10
-class retroactivity():
-    def __init__(self, outputfile):
+MAX = 10
+class Retroactivity():
+    def __init__(self, sourcefile, outputfile):
         self.move_set = {}
         with open(outputfile) as move_set:
             csv_reader = csv.reader(move_set)
             next()
             for i, row in csv_reader:
                 self.move_set[i] = row
+        self.sourcefile = sourcefile
 
 
     def run(self):
-        # global MAX
-        # count = 0
+        global MAX
         # while True:
         # move_set = 
-        # move_set = list(self.move_set)[MAX:]
-        # for move in move_set:
-            # self.move(move)
-        # 
+        # stappen uitvoeren
+        for move in self.move_set:
+            self.game.move(move) 
         # create layout
+        move_set = list(self.move_set)[MAX:]
         # layout = self.board.layout
-        # bfs = BreathFirst(Sourcefile??(layout??))
+        # bfs = BreathFirst(self.sourcefile, layout, move_set)
         # move_set = bfs.run
         # check for win??
 

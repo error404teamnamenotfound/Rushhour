@@ -4,6 +4,7 @@ import sys
 from code.algorithms.bfs import BreadthFirst
 from code.algorithms.randomise import Randomise
 from code.algorithms.hybrid import Hybrid
+from code.algorithms.hybrid2.0 import Retroactivity
 
 from code.visualisation.visualisation import visualize
 
