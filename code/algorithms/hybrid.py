@@ -5,11 +5,12 @@ from code.algorithms.randomise import Randomise
 class Hybrid():
     def __init__(self, sourcefile):
         self.sourcefile = sourcefile
-        
+        print('Randomise:')
         Random = Randomise(sourcefile)
         self.moves_set = Random.run()
 
     def run(self):
+        print('hybrid:')
 
         while True:
 
@@ -38,6 +39,7 @@ class Hybrid():
             
             # delete all steps between same layouts
             del self.moves_set[(key_pairs_sort[0][0] + 1): key_pairs_sort[0][1] + 1]
+            
             print(len(self.moves_set))
 
         return self.moves_set
