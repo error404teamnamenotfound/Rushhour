@@ -2,49 +2,62 @@ import csv
 
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
+from matplotlib.colors import ListedColormap
+from matplotlib import cm
 import numpy as np
 import matplotlib
 from code.classes.game import Game
 
-def visualize(sourcefile, outputfile):
+class Visualize:
+    
+    def __init__(self, sourcefile, outputfile):
+        # initialize figure and images list
+        self.fig = plt.figure()
+        self.ims = []
+        self.outputfile = outputfile
 
-    # initialize figure and images list
-    fig = plt.figure()
-    ims = []
+        # read outputfile
+        with open(outputfile, "r") as reader:
+            datafile = csv.reader(reader)
+            next(datafile)
+            self.moves_set = []
+            for row in datafile:
+                self.moves_set.append([row[0], int(row[1])])
 
-    # read outputfile
-    with open(outputfile, "r") as reader:
-        datafile = csv.reader(reader)
-        next(datafile)
-        moves_set = []
-        for row in datafile:
-            moves_set.append([row[0], int(row[1])])
+        # create new game
+        self.game = Game(sourcefile)
 
-    # create new game
-    game = Game(sourcefile)
+        # create first layout
+        self.game.board.create_layout()
 
-    # create first layout
-    game.board.create_layout()
+      
 
-    # change matrix to numbers
-    matrix = np.array([[ord(letter) - 64 for letter in row] for row in game.board.layout])
-    indices = np.where(matrix == 31)
-    matrix[indices] = 0
+        cmap = ListedColormap(["white","red", "black", "lawngreen", "violet","navy", "chocolate", "wheat", "gray", "aqua", "limegreen", "fuchsia", "olive", "lightcoral","indigo", "khaki", "lightseagreen", "green", "orange","gold", "darkorange", "darkgreen", "blue", "purple", "pink", "lightblue"])
 
-    # create first image
-    im = plt.imshow(matrix, animated=True, cmap ='terrain_r')
-    ims.append([im])
-
-    # move and add new images per layout
-    for move in moves_set:
-        game.move(move)
-        game.board.create_layout()
-        matrix = np.array([[ord(letter) - 64 for letter in row] for row in game.board.layout])
-        indices = np.where(matrix == 31)
+        # change matrix to numbers
+        matrix = np.array([[ord(letter) - 63 for letter in row] for row in self.game.board.layout])
+        indices = np.where(matrix == 32)
+        xx = np.where(matrix == 25)
         matrix[indices] = 0
-        im = plt.imshow(matrix, animated=True, cmap='terrain_r')
-        ims.append([im])
+        matrix[xx] = 1
 
-    # create animation
-    ani = animation.ArtistAnimation(fig, ims, interval=400, blit=True, repeat_delay=10000)
-    ani.save(f'{outputfile}.gif')
+        # create first image
+        im = plt.imshow(matrix, animated=True, cmap=cmap)
+        self.ims.append([im])
+
+        # move and add new images per layout
+        for move in self.moves_set:
+            self.game.move(move)
+            self.game.board.create_layout()
+            matrix = np.array([[ord(letter) - 63 for letter in row] for row in self.game.board.layout])
+            indices = np.where(matrix == 32)
+            matrix[indices] = 0
+            xx = np.where(matrix == 25)
+            matrix[xx] = 1
+            im = plt.imshow(matrix, animated=True, cmap=cmap)
+            self.ims.append([im])
+            print(matrix)
+
+        # create animation
+        ani = animation.ArtistAnimation(self.fig, self.ims, interval=400, blit=True, repeat_delay=10000)
+        ani.save(f'{self.outputfile}.gif')

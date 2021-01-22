@@ -6,7 +6,7 @@ from code.algorithms.randomise import Randomise
 from code.algorithms.hybrid import Hybrid
 from code.algorithms.hybrid2 import Hybrid2
 
-from code.visualisation.visualisation import visualize
+from code.visualisation.visualisation import Visualize
 
 
 if __name__ == '__main__':
@@ -41,8 +41,11 @@ if __name__ == '__main__':
     #     writer.writerow(fieldnames)
     #     writer.writerows(moves_set)
     
-    # # print output
-    # print(moves_set)
+    # # # print output
+    # # print(moves_set)
     
-    # # visualize output
-    # visualize(f'data/Rushhour{board_choice}.csv', f'output/output{board_choice}_{algorithm_choice}.csv')
+    # # # visualize output
+    # Visualize(f'data/Rushhour{board_choice}.csv', f'output/output{board_choice}_{algorithm_choice}.csv')
+
+    Visualize(f'data/Rushhour6x6_2.csv', f'output/output6x6_2_breadthfirst.csv')
+
