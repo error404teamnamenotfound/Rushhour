@@ -22,7 +22,8 @@ class Hybrid2():
     def run(self):
         global MAX
         #starting_moves = self.moves_set
-
+        
+        final_moves_set = [['', 0]]
         while self.moves_set:
             
             # get final layout
@@ -33,21 +34,24 @@ class Hybrid2():
             print("layout created")
             
             # run breadthfirst from starting moves to final layout
-            self.moves_set = self.moves_set[:-MAX]
+            if len(self.moves_set) >= MAX:
+                self.moves_set = self.moves_set[:-MAX]
+                
             layout = self.game.board.layout.tobytes()
             bfs = BFHybrid(self.sourcefile, layout, self.moves_set)
             new_moves_set = bfs.run()
 
+            if final_moves_set[0] == new_moves_set:
+                final_moves_set.pop()
+
             # append or insert moves based on won
             won = bfs.won_game()
+            
             if won == 1:
-                final_moves_set = [self.moves_set + new_moves_set]
-            elif won == 2:
                 final_moves_set.insert(0, new_moves_set)
 
-            if len(new_moves_set) < MAX:
-                # TODO
-                self.moves_set = self.moves_set + new_moves_set
+            elif won == 2:
+                final_moves_set.insert(0, new_moves_set)
 
             print(new_moves_set)
 
