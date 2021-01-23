@@ -93,8 +93,8 @@ class Game():
         Example: 6x6 exit is at (3, 6) --> index [2][5].
         """
 
-        # get column right of red car
-        col_x = self.board.cars['X'].col
+        # # get column right of red car
+        # col_x = self.board.cars['X'].col
         # col_x = [car.col + 2 for car in self.board.cars if car.name == 'X'][0]
 
         # get coordinates of exit
@@ -108,7 +108,7 @@ class Game():
             # moves_left = self.board.size - col_x
             # self.moves.append(['X', moves_left])
 
-            print("success")
+            #print("success")
             return True
 
         return False

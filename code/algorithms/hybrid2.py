@@ -2,7 +2,7 @@ import csv
 from code.classes.game import Game
 from code.algorithms.bfs_hybrid import BFHybrid
 
-MAX = 10
+MAX = 7
 class Hybrid2():
     def __init__(self, sourcefile, outputfile):
 
@@ -22,34 +22,57 @@ class Hybrid2():
     def run(self):
         global MAX
         #starting_moves = self.moves_set
-
+        
+        final_moves_set = []
         while self.moves_set:
             
             # get final layout
-            for move in self.moves_set:
-                self.game.move(move) 
+            for choice in self.moves_set:
+                self.game.move(choice) 
             self.game.board.create_layout()
-
+            layout = self.game.board.layout.tobytes()
             print("layout created")
             
             # run breadthfirst from starting moves to final layout
-            self.moves_set = self.moves_set[:-MAX]
-            layout = self.game.board.layout.tobytes()
+            if len(self.moves_set) >= MAX:
+                print(len(self.moves_set))
+                del self.moves_set[-MAX:]
+                print(f"moves:{len(self.moves_set)}")
+                # self.moves_set = self.moves_set[len(self.moves_set)-MAX:]
+            else:
+                self.moves_set.clear()
+                
             bfs = BFHybrid(self.sourcefile, layout, self.moves_set)
             new_moves_set = bfs.run()
 
-            # append or insert moves based on won
-            won = bfs.won_game()
-            if won == 1:
-                final_moves_set = [self.moves_set + new_moves_set]
-            elif won == 2:
-                final_moves_set.insert(0, new_moves_set)
+            # try:
+            #     if final_moves_set[-1] == new_moves_set:
+            #         final_moves_set.pop()
+            # except IndexError:
+            #     pass
 
+            # check if goal was reached or full game was won
+            won = bfs.won_game()
+            print(f"won: {won}")
+
+            # if new moves set is shorter, run bfs from there
             if len(new_moves_set) < MAX:
-                # TODO
                 self.moves_set = self.moves_set + new_moves_set
 
-            print(new_moves_set)
+            # if full game was won, new moves set is your final set
+            elif won == 1:
+                final_moves_set = new_moves_set
+
+            # if goal was not reached in less steps, run bfs from MAX steps less again
+            else:
+                final_moves_set = new_moves_set + final_moves_set
+            
+            # # append or insert moves based on won
+            # won = bfs.won_game()
+            # if won == 1:
+            #     final_moves_set = new_moves_set
+            # else:
+            #     final_moves_set = new_moves_set + final_moves_set
 
         return final_moves_set
 
