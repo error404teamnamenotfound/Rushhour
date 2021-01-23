@@ -3,11 +3,19 @@ from code.classes.game import Game
 from code.algorithms.randomise import Randomise
 
 class Hybrid():
-    def __init__(self, sourcefile):
+    def __init__(self, sourcefile, outputfile):
         self.sourcefile = sourcefile
-        print('Randomise:')
-        Random = Randomise(sourcefile)
-        self.moves_set = Random.run()
+        # print('Randomise:')
+        # Random = Randomise(sourcefile)
+        # self.moves_set = Random.run()
+
+        # get moves set
+        with open(outputfile, "r") as reader:
+            datafile = csv.reader(reader)
+            next(datafile)
+            self.moves_set = []
+            for row in datafile:
+                self.moves_set.append([row[0], int(row[1])])
 
     def run(self):
         print('hybrid:')

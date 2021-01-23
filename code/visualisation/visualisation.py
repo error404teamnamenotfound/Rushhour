@@ -33,7 +33,8 @@ class Visualize:
         # create color map
         possible_colors = ["darkorange", "darkgreen", "gold","navy", "indigo", "steelblue"]
         colors = ["white", "red"]
-        for i in range(len(self.game.board.cars) - 1):
+        last_car = ord(list(self.game.board.cars.values())[-2].name) - 63
+        for i in range(last_car - 1):
             colors.append(possible_colors[i % len(possible_colors)])
         cmap = ListedColormap(colors)
 

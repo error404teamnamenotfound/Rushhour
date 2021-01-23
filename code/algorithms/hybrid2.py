@@ -6,7 +6,7 @@ MAX = 7
 class Hybrid2():
     def __init__(self, sourcefile, outputfile):
 
-        self.game = Game(sourcefile)
+        #self.game = Game(sourcefile)
         self.sourcefile = sourcefile
 
         # get moves set
@@ -27,10 +27,11 @@ class Hybrid2():
         while self.moves_set:
             
             # get final layout
+            game = Game(self.sourcefile)
             for choice in self.moves_set:
-                self.game.move(choice) 
-            self.game.board.create_layout()
-            layout = self.game.board.layout.tobytes()
+                game.move(choice) 
+            game.board.create_layout()
+            layout = game.board.layout
             print("layout created")
             
             # run breadthfirst from starting moves to final layout
@@ -40,6 +41,7 @@ class Hybrid2():
                 print(f"moves:{len(self.moves_set)}")
                 # self.moves_set = self.moves_set[len(self.moves_set)-MAX:]
             else:
+                MAX = len(self.moves_set)
                 self.moves_set.clear()
                 
             bfs = BFHybrid(self.sourcefile, layout, self.moves_set)

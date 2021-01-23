@@ -36,6 +36,6 @@ class BFHybrid(BreadthFirst):
         """
         if self.game.win():
             return 1
-        elif self.game.board.layout.tobytes() == self.goal:
+        elif self.game.board.layout.tobytes() == self.goal.tobytes():
             return 2
         return False
