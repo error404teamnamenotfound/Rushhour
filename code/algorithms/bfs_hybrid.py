@@ -19,7 +19,10 @@ class BFHybrid(BreadthFirst):
         self.game.board.draw_board()
 
         # put first possible moves in queue
-        last_move = starting_moves[-1]
+        if starting_moves:
+            last_move = starting_moves[-1]
+        else:
+            last_move = [None, 0]
         self.queue = [[move] for move in self.game.find_moves(last_move)]
     
     def won_game(self):

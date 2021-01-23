@@ -11,12 +11,12 @@ from code.visualisation.visualisation import Visualize
 
 if __name__ == '__main__':
 
-    hybrid2 = Hybrid2(f'data/Rushhour9x9_6.csv', f'output/output_6_85.csv')
+    hybrid2 = Hybrid2(f'data/Rushhour6x6_1.csv', f'output/output6x6_1_randomise.csv')
     moves_set = hybrid2.run()
-    print(moves_set)
-    print(len(moves_set))
+    print(f"moves_set; {moves_set}")
+    print(f"len moves_set; {len(moves_set)}")
 
-    # find algorithm and board input
+    # # find algorithm and board input
     # try:
     #     algorithm_choice = sys.argv[1]
     #     board_choice = sys.argv[2]
@@ -33,6 +33,7 @@ if __name__ == '__main__':
     
     # # run algorithm
     # moves_set = algorithms[algorithm_choice](f'data/Rushhour{board_choice}.csv').run()
+
     
     # # write moves set to outputfile
     # with open(f'output/output{board_choice}_{algorithm_choice}_{len(moves_set)}.csv', 'w', newline='') as outputfile:
@@ -47,5 +48,5 @@ if __name__ == '__main__':
     # # # visualize output
     # Visualize(f'data/Rushhour{board_choice}.csv', f'output/output{board_choice}_{algorithm_choice}.csv')
 
-    Visualize(f'data/Rushhour6x6_2.csv', f'output/output6x6_2_breadthfirst.csv')
+    # Visualize(f'data/Rushhour6x6_2.csv', f'output/output6x6_2_breadthfirst.csv')
 

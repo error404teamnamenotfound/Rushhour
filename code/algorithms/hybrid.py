@@ -40,7 +40,6 @@ class Hybrid():
             # delete all steps between same layouts
             del self.moves_set[(key_pairs_sort[0][0] + 1): key_pairs_sort[0][1] + 1]
             
-            print(len(self.moves_set))
 
         return self.moves_set
 
