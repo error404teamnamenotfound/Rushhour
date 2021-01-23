@@ -7,10 +7,12 @@ class BFHybrid(BreadthFirst):
     Creates Breadth First algorithm where first moves are set and goal
     is a given layout.
     """
-    def __init__(self, sourcefile, goal, starting_moves):
+    def __init__(self, sourcefile, goal, starting_moves, max_moves):
         self.game = Game(sourcefile)
         self.archive = {}
         self.goal = goal
+        self.max_moves = max_moves
+        print(self.max_moves)
 
         # run starting moves
         for choice in starting_moves:
@@ -38,4 +40,6 @@ class BFHybrid(BreadthFirst):
             return 1
         elif self.game.board.layout.tobytes() == self.goal.tobytes():
             return 2
+        elif len(self.queue[0]) >= self.max_moves:
+            return 3
         return False

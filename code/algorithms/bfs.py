@@ -73,8 +73,8 @@ class BreadthFirst():
 
         while self.queue:
 
-            # print depth of tree every 1000 steps
-            if counter % 1000 == 0:
+            # print depth of tree every 10000 steps
+            if counter % 10000 == 0:
                 print(len(self.queue[0]))
 
             # get first moves set from queue
