@@ -30,9 +30,12 @@ class Visualize:
         # create first layout
         self.game.board.create_layout()
 
-      
-
-        cmap = ListedColormap(["white","red", "black", "lawngreen", "violet","navy", "chocolate", "wheat", "gray", "aqua", "limegreen", "fuchsia", "olive", "lightcoral","indigo", "khaki", "lightseagreen", "green", "orange","gold", "darkorange", "darkgreen", "blue", "purple", "pink", "lightblue"])
+        # create color map
+        possible_colors = ["darkorange", "darkgreen", "gold","navy", "indigo", "steelblue"]
+        colors = ["white", "red"]
+        for i in range(len(self.game.board.cars) - 1):
+            colors.append(possible_colors[i % len(possible_colors)])
+        cmap = ListedColormap(colors)
 
         # change matrix to numbers
         matrix = np.array([[ord(letter) - 63 for letter in row] for row in self.game.board.layout])
@@ -42,6 +45,8 @@ class Visualize:
         matrix[xx] = 1
 
         # create first image
+        plt.xticks([])
+        plt.yticks([])
         im = plt.imshow(matrix, animated=True, cmap=cmap)
         self.ims.append([im])
 
@@ -56,7 +61,6 @@ class Visualize:
             matrix[xx] = 1
             im = plt.imshow(matrix, animated=True, cmap=cmap)
             self.ims.append([im])
-            print(matrix)
 
         # create animation
         ani = animation.ArtistAnimation(self.fig, self.ims, interval=400, blit=True, repeat_delay=10000)
