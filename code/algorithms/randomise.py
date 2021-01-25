@@ -34,8 +34,8 @@ class Randomise():
                 t1 = time.perf_counter() - t0
 
                 # print number of played moves, time elapsed and speed
-                if counter % 1000 == 0:
-                    print(f"{len(moves_set)} in {t1:.2f} s")
+                #if counter % 1000 == 0:
+                print(f"{len(moves_set)} in {t1:.2f} s")
                 #print(f"{len(moves_set)/t1:.1f} moves/s")
 
                 counter += 1

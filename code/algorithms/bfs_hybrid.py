@@ -12,7 +12,6 @@ class BFHybrid(BreadthFirst):
         self.archive = {}
         self.goal = goal
         self.max_moves = max_moves
-        print(self.max_moves)
 
         # run starting moves
         for choice in starting_moves:
@@ -40,6 +39,6 @@ class BFHybrid(BreadthFirst):
             return 1
         elif self.game.board.layout.tobytes() == self.goal.tobytes():
             return 2
-        elif len(self.queue[0]) >= self.max_moves:
+        elif len(self.queue[0]) >= self.max_moves - 4:
             return 3
         return False

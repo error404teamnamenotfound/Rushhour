@@ -2,7 +2,7 @@ import csv
 from code.classes.game import Game
 from code.algorithms.randomise import Randomise
 
-class Hybrid():
+class LoopRemover():
     def __init__(self, sourcefile, moves_set):
         self.sourcefile = sourcefile
         # print('Randomise:')
@@ -20,7 +20,6 @@ class Hybrid():
         self.moves_set = moves_set
 
     def run(self):
-        print('hybrid:')
 
         while True:
 

@@ -1,14 +1,26 @@
 from code.algorithms.randomise import Randomise
-from code.algorithms.hybrid
+from code.algorithms.loopremover import LoopRemover
+from code.algorithms.minibfs import MiniBFS
 
-class Hybrid3(self):
-    def __init__(self):
-        pass
+class Hybrid3():
+    def __init__(self, sourcefile):
+        self.sourcefile = sourcefile
 
     def run(self):
         # run randomise untill less than 100
+        randomise = Randomise(self.sourcefile)
+        moves_set = randomise.run()
 
-        # run loopcutter
+        # run loopremover
+        loopremover = LoopRemover(self.sourcefile, moves_set)
+        moves_set = loopremover.run()
+
+        # run minibfs in steps of 10
+        minibfs = MiniBFS(self.sourcefile, 10, moves_set)
+        moves_set = minibfs.run()
+
+        return moves_set
+
 
         # run hybrid2 in steps of 10 from beginning (bfs can do max 4/5 steps) to find the earliest win
 

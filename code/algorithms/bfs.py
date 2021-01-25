@@ -41,7 +41,7 @@ class BreadthFirst():
         Checks if layout is already in archive. If not, adds layout to archive.
         """
         if self.game.board.layout.tobytes() not in self.archive:
-            self.archive[self.game.board.layout.tobytes()] = self.game.board.layout
+            self.archive[self.game.board.layout.tobytes()] = self.game.board.layout.tobytes()
             return True
         return False
 
@@ -82,16 +82,16 @@ class BreadthFirst():
 
             # move all moves from set
             self.try_moves(moves_set)
+
+            # continue branch (add to queue) if layout is not in archive
+            if self.not_in_archive():
+                self.add_to_queue(moves_set)
             
             # check for win
             if self.won_game():
 
                 # return winning set of moves
                 return moves_set
-
-            # continue branch (add to queue) if layout is not in archive
-            if self.not_in_archive():
-                self.add_to_queue(moves_set)
             
             # reverse moves to original layout
             self.reverse_moves(moves_set)
