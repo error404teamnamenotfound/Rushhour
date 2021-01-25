@@ -88,7 +88,7 @@ class MiniBFS():
 
             #if full game was won, add to final moves set and stop
             if won == 1:
-                self.final_moves_set = self.final_moves_set + new_moves_set
+                self.final_moves_set += new_moves_set
                 return self.final_moves_set
 
             # if shorter moves set found, add to self.moves_set and start over
@@ -97,9 +97,7 @@ class MiniBFS():
 
             # if max steps was reached, keep old set of moves
             elif won == 3:
-                print(f"before:{len(self.final_moves_set)}")
                 self.final_moves_set = goal_moves
-                print(f"after:{len(self.final_moves_set)}")
 
         return self.final_moves_set
 

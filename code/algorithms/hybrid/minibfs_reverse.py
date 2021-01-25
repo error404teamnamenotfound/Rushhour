@@ -46,7 +46,7 @@ class MiniBFS_reverse(MiniBFS):
 
             # if new moves set is shorter, run bfs from there
             if len(new_moves_set) < self.step_size and won != 3:
-                self.moves_set = self.moves_set + new_moves_set
+                self.moves_set += new_moves_set
 
             # if full game was won, new set is final moves
             elif won == 1:

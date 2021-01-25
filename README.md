@@ -12,9 +12,13 @@ This code is written in python 3.8. To run this code successfully some required 
 
 ### Usage
 
-To run an algorithm write the following code. Add the algorithm - and board choice in the command line.
-
+To run an breadthfirst search use:
 `python3 main.py {algorithm choice} {board choice}`
+
+If you want to run Randomise or Hybrid, you can add a MAX for the number of moves a random can do:
+`python3 main.py {algorithm choice} {board choice} {MAX: 1000}`
+    
+    If MAX if not given the MAX will be pre-set to 1000
 
 ### Structure
 
