@@ -91,7 +91,3 @@ class Randomise():
 
             # return best moves list
             return self.best_moves
-
-
-
-    
