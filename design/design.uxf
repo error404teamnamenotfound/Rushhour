@@ -29,6 +29,7 @@ run(self)
 Randomise(sourcefile)
 loopremover(output_randomise)
 minibfs(sourcefile, steps, output_randomise)
+minibfs_reverse(sourcefile, steps, output_randomise)
 --
 moves_set</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>270</x><y>230</y><w>210</w><h>210</h></coordinates><panel_attributes>Breadth First Search
 --
