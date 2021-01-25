@@ -12,7 +12,7 @@ from code.visualisation.visualisation import Visualize
 
 if __name__ == '__main__':
 
-    hybrid3 = Hybrid3('data/Rushhour9x9_6.csv')
+    hybrid3 = Hybrid3('data/Rushhour12x12_7.csv')
     moves_set = hybrid3.run()
     print(f"moves_set; {moves_set}")
     print(f"len moves_set; {len(moves_set)}")
@@ -53,7 +53,7 @@ if __name__ == '__main__':
     #     writer.writerow(fieldnames)
     #     writer.writerows(moves_set)
 
-    with open(f'output/output9x9_6_hybrid3_{len(moves_set)}.csv', 'w', newline='') as outputfile:
+    with open(f'output/output12x12_7_hybrid3_{len(moves_set)}.csv', 'w', newline='') as outputfile:
         fieldnames = ['car', 'move']
         writer = csv.writer(outputfile)
         writer.writerow(fieldnames)
@@ -65,5 +65,5 @@ if __name__ == '__main__':
     # # # visualize output
     # Visualize(f'data/Rushhour{board_choice}.csv', f'output/output{board_choice}_{algorithm_choice}.csv')
 
-    Visualize(f'data/Rushhour9x9_6.csv', f'output/output9x9_6_hybrid3_{len(moves_set)}.csv')
+    Visualize(f'data/Rushhour12x12_7.csv', f'output/output12x12_7_hybrid3_{len(moves_set)}.csv')
 

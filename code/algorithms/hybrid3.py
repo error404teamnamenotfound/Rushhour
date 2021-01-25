@@ -11,13 +11,15 @@ class Hybrid3():
         randomise = Randomise(self.sourcefile)
         moves_set = randomise.run()
 
-        # run loopremover
-        loopremover = LoopRemover(self.sourcefile, moves_set)
-        moves_set = loopremover.run()
+        for i in range(10, 5, -1):
 
-        # run minibfs in steps of 10
-        minibfs = MiniBFS(self.sourcefile, 10, moves_set)
-        moves_set = minibfs.run()
+            # run loopremover
+            loopremover = LoopRemover(self.sourcefile, moves_set)
+            moves_set = loopremover.run()
+
+            # run minibfs in steps of i
+            minibfs = MiniBFS(self.sourcefile, i, moves_set)
+            moves_set = minibfs.run()
 
         return moves_set
 
