@@ -97,6 +97,3 @@ class BreadthFirst():
             
             # add to counter
             counter += 1
-
-            
-

@@ -60,8 +60,6 @@ class Randomise():
             moves_set.append(choice)
             last_move = choice
         
-        #game.board.draw_board()
-        
         return moves_set
 
     def run(self):
