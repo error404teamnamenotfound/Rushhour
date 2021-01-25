@@ -46,11 +46,11 @@ if __name__ == '__main__':
         moves_set = algorithms[algorithm_choice](f'data/Rushhour{board_choice}.csv', MAX).run()
 
     # write moves set to outputfile
-    with open(f'output/output{board_choice}_{algorithm_choice}_{len(moves_set)}.csv', 'w', newline='') as outputfile:
+    with open(f'output/{board_choice}/output{board_choice}_{algorithm_choice}_{len(moves_set)}.csv', 'w', newline='') as outputfile:
         fieldnames = ['car', 'move']
         writer = csv.writer(outputfile)
         writer.writerow(fieldnames)
         writer.writerows(moves_set)
 
     # visualize output
-    Visualize(f'data/Rushhour{board_choice}.csv', f'output/output{board_choice}_{algorithm_choice}_{len(moves_set)}.csv')
+    Visualize(f'data/Rushhour{board_choice}.csv', f'output/{board_choice}/output{board_choice}_{algorithm_choice}_{len(moves_set)}.csv').run()

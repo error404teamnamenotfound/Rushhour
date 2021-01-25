@@ -8,6 +8,7 @@ import numpy as np
 import matplotlib
 from code.classes.game import Game
 
+# initialise globals
 ASCII = 63
 VALUE__ = 32
 VALUE_X = 25
