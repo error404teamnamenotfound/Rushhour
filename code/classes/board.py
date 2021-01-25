@@ -1,8 +1,6 @@
-import csv
+import csv, re, time
 import matplotlib.pyplot as plt
 import numpy as np
-import re
-import time
 
 from code.classes.car import Car
 
@@ -69,9 +67,6 @@ class Board():
         """
         Prints board matrix on screen.
         """
-
-        # clear screen for new board
-        #print("\033[H\033[J")
 
         # print new board
         for row in self.layout:
