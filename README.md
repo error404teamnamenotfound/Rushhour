@@ -1,18 +1,18 @@
 # Rush Hour
 
-Rush Hour is a sliding puzzle in which the aim is to get the red car to the exit. In a field of x high and x wide, several cars (two units) and trucks (three units) stand in the way, preventing the red car from reaching the exit. The vehicles cannot change their direction from vertical to horizontal and vice versa. The difficulty of the game is determined by the fact that there is not one straight line to the end goal.
+Rush Hour is a sliding puzzle in which the aim is to get the red car to the exit. In a field of x high and x wide, several cars (two units) and trucks (three units) block the exit, preventing the red car from reaching that exit. The vehicles cannot change their direction from vertical to horizontal and vice versa. The difficulty of the game is determined by the fact that there is not one straight line to the end goal. For instance, sometimes the red has to move backwards to clear a path for a later state.
 
 ## To get started
 
 ### Requirements
 
-This code is written in python 3.8. To run this code successfully some required packages are necessary. These are easy to install with the sequent code:
+This code is written in python 3.8. To run this code successfully some required packages are necessary. These are easy to install with the following code:
 
 `pip install -r requirements.txt`
 
 ### Usage
 
-To run an algorithm write the sequent code. Add the algorithm - and board choice in the command line. 
+To run an algorithm write the following code. Add the algorithm - and board choice in the command line. 
 
 `python3 main.py {algorithm choice} {board choice}`
 
