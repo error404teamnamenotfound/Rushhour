@@ -5,12 +5,15 @@ Rush Hour is a sliding puzzle in which the aim is to get the red car to the exit
 ## To get started
 
 ### Requirements
+
 This code is written in python 3. 
 
 ### Usage
+
 python3 main.py {algorithm choice} {board choice}
 
 ### Structure
+
 /code/
 	/code/algorithms/ : the methods to solve the game
 	/code/classes/ : classes to create a game
@@ -20,6 +23,6 @@ python3 main.py {algorithm choice} {board choice}
 
 ### Authors
 
-Stef Grijpma
-Mylène van der Maas
-Melody Kaagman
+- Stef Grijpma
+- Mylène van der Maas
+- Melody Kaagman
