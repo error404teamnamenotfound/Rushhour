@@ -2,14 +2,15 @@ from code.classes.game import Game
 from code.algorithms.bfs_hybrid import BFHybrid
 
 class MiniBFS_reverse():
-    def __init__(self, sourcefile, step_size, moves_set):
+    def __init__(self, sourcefile, step_size, moves_set, max_moves):
 
         self.game = Game(sourcefile)
         self.sourcefile = sourcefile
 
         # get step size and moves set
-        self.step_size = int(step_size)
-        self.moves_set = moves_set   
+        self.step_size = step_size
+        self.moves_set = moves_set
+        self.max_moves = max_moves
     
     def run(self):
 
@@ -22,7 +23,6 @@ class MiniBFS_reverse():
                 game.move(choice) 
             game.board.create_layout()
             layout = game.board.layout
-            print("layout created")
             
             # run breadthfirst from starting moves to final layout
             if len(self.moves_set) >= self.step_size:
@@ -37,7 +37,7 @@ class MiniBFS_reverse():
                 self.moves_set.clear()
 
                 
-            bfs = BFHybrid(self.sourcefile, layout, self.moves_set, self.step_size)
+            bfs = BFHybrid(self.sourcefile, layout, self.moves_set, self.max_moves)
             new_moves_set = bfs.run()
 
             # check if goal was reached or full game was won

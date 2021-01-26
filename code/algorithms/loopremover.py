@@ -5,18 +5,6 @@ from code.algorithms.randomise import Randomise
 class LoopRemover():
     def __init__(self, sourcefile, moves_set):
         self.sourcefile = sourcefile
-        # print('Randomise:')
-        # Random = Randomise(sourcefile)
-        # self.moves_set = Random.run()
-
-        # get moves set
-        # with open(outputfile, "r") as reader:
-        #     datafile = csv.reader(reader)
-        #     next(datafile)
-        #     self.moves_set = []
-        #     for row in datafile:
-        #         self.moves_set.append([row[0], int(row[1])])
-
         self.moves_set = moves_set
 
     def run(self):

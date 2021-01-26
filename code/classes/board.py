@@ -59,9 +59,9 @@ class Board():
             if car.orientation == "H":
 
                 # place as many letters on board as car length
-                self.layout[car.row, car.col:car.col + car.length] = car.name
+                self.layout[car.row, car.col:car.col + car.length] = car.name[-1]
             elif car.orientation == "V":
-                self.layout[car.row:car.row + car.length, car.col] = car.name
+                self.layout[car.row:car.row + car.length, car.col] = car.name[-1]
             
         return self.layout
 

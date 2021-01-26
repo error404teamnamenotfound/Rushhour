@@ -3,128 +3,92 @@ from code.classes.game import Game
 from code.algorithms.bfs_hybrid import BFHybrid
 
 class MiniBFS():
-    def __init__(self, sourcefile, step_size, moves_set):
-
-        #self.game = Game(sourcefile)
+    """
+    Creates mini Breadth First algorithm that tries to find a shorter path of moves
+    through a moves set in steps of given step size.
+    """
+    def __init__(self, sourcefile, step_size, moves_set, max_moves):
         self.game = Game(sourcefile)
         self.sourcefile = sourcefile
-
-        #get moves set
-        # with open(outputfile, "r") as reader:
-        #     datafile = csv.reader(reader)
-        #     next(datafile)
-        #     self.moves_set = []
-        #     for row in datafile:
-        #         self.moves_set.append([row[0], int(row[1])])
-
-        # get step size and moves set
         self.step_size = step_size
         self.moves_set = moves_set
+        self.max_moves = max_moves
+        self.final_moves_set = []
 
-        
+    def get_mini_moves_set(self):
+        """
+        Returns part of moves set and removes that from original moves set.
+        """
 
-        print("loaded")
+        # get part of moves set of length step size if possible
+        if len(self.moves_set) >= self.step_size:
+            old_moves_set = self.moves_set[:self.step_size]
+            del self.moves_set[:self.step_size]
+
+        # otherwise get remaining part of moves set
+        else:
+            self.step_size = len(self.moves_set)
+            old_moves_set = self.moves_set[:]
+            self.moves_set.clear()
+
+        return old_moves_set
+
+    def try_moves(self, old_moves_set):
+        """
+        Moves cars from moves set to find the goal layout for the mini Breadth First.
+        """
+        for choice in old_moves_set:
+            self.game.move(choice)
+        self.game.board.create_layout()
+
+    def run_breadthfirst(self):
+        """
+        Runs small Breadth First algorithm to find shorter path from starting moves
+        to goal layout. Returns path and way of winning.
+        """
+
+        # get goal layout
+        layout = self.game.board.layout
+
+        # run breadth first hybrid version
+        bfs = BFHybrid(self.sourcefile, layout, self.final_moves_set, self.max_moves)
+        new_moves_set = bfs.run()
+
+        # check kind of win
+        won = bfs.won_game()
+
+        return new_moves_set, won
 
     def run(self):
 
-        final_moves_set = []
-        goal_moves = []
-
         while self.moves_set:
             
+            # print length of moves set to keep track
+            print(len(self.moves_set))
             
-            if len(self.moves_set) >= self.step_size:
-                print(len(self.moves_set))
-                goal_moves = self.moves_set[:self.step_size]
-                print(len(goal_moves))
-                #old_set = self.moves_set[:self.step_size]
-                del self.moves_set[:self.step_size]
-                print(f"moves:{len(self.moves_set)}")
-                # self.moves_set = self.moves_set[len(self.moves_set)-MAX:]
-            else:
-                self.step_size = len(self.moves_set)
-                goal_moves = self.moves_set[:]
-                self.moves_set.clear()
+            # get small part of moves set
+            old_moves_set = self.get_mini_moves_set()
 
-            # get goal layout
-            #game = Game(self.sourcefile)
-            for choice in goal_moves:
-                self.game.move(choice)
-            self.game.board.create_layout()
-            layout = self.game.board.layout
-            print("layout created")
+            # move moves to goal layout
+            self.try_moves(old_moves_set)
             
             # run breadth first hybrid version
-            bfs = BFHybrid(self.sourcefile, layout, final_moves_set, self.step_size)
-            new_moves_set = bfs.run()
+            new_moves_set, won = self.run_breadthfirst()
 
-            # check if goal was reached or full game was won
-            won = bfs.won_game()
+            # show in terminal what kind of win was reached
             print(f"won: {won}")
 
             # if full game was won, add to final moves set and stop
             if won == 1:
-                final_moves_set = final_moves_set + new_moves_set
-                return final_moves_set
+                self.final_moves_set = self.final_moves_set + new_moves_set
+                return self.final_moves_set
 
             # if shorter moves set found, add to self.moves_set and start over
             elif won == 2:
-                final_moves_set = final_moves_set + new_moves_set
+                self.final_moves_set = self.final_moves_set + new_moves_set
 
             # if max steps was reached, keep old set of moves
             elif won == 3:
-                final_moves_set = final_moves_set + goal_moves
+                self.final_moves_set = self.final_moves_set + old_moves_set
 
-        return final_moves_set
-        
-        # final_moves_set = []
-        # while self.moves_set:
-            
-        #     # get goal layout
-        #     game = Game(self.sourcefile)
-        #     for choice in self.moves_set:
-        #         game.move(choice) 
-        #     game.board.create_layout()
-        #     layout = game.board.layout
-        #     print("layout created")
-            
-        #     # run breadthfirst from starting moves to final layout
-        #     if len(self.moves_set) >= MAX:
-        #         print(len(self.moves_set))
-        #         old_set = self.moves_set[-MAX:]
-        #         del self.moves_set[-MAX:]
-        #         print(f"moves:{len(self.moves_set)}")
-        #         # self.moves_set = self.moves_set[len(self.moves_set)-MAX:]
-        #     else:
-        #         MAX = len(self.moves_set)
-        #         old_set = self.moves_set[:]
-        #         self.moves_set.clear()
-
-                
-        #     bfs = BFHybrid(self.sourcefile, layout, self.moves_set, MAX)
-        #     new_moves_set = bfs.run()
-
-        #     # check if goal was reached or full game was won
-        #     won = bfs.won_game()
-        #     print(f"won: {won}")
-
-        #     # if new moves set is shorter, run bfs from there
-        #     if len(new_moves_set) < MAX and won != 3:
-        #         self.moves_set = self.moves_set + new_moves_set
-
-        #     # if full game was won, new moves set is your final set
-        #     elif won == 1:
-        #         final_moves_set = new_moves_set
-
-        #     # if MAX steps was reached, keep old set of moves
-        #     elif won == 3:
-        #         final_moves_set = old_set + final_moves_set
-
-        #     # if goal was not reached in less steps, run bfs from MAX steps less again
-        #     else:
-        #         final_moves_set = new_moves_set + final_moves_set
-
-        #return final_moves_set
-
-
-
+        return self.final_moves_set

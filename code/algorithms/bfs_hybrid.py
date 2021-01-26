@@ -39,6 +39,6 @@ class BFHybrid(BreadthFirst):
             return 1
         elif self.game.board.layout.tobytes() == self.goal.tobytes():
             return 2
-        elif len(self.queue[0]) >= 5:
+        elif len(self.queue[0]) > self.max_moves:
             return 3
         return False
