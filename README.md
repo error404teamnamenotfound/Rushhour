@@ -16,12 +16,25 @@ To run an breadthfirst search use:
 
 `python3 main.py {algorithm choice} {board choice}`
 
-If you want to run Randomise or Hybrid, you can add a MAX for the number of moves a random can do:
+| Algorithms | Short description |
+|------------|--------|
+| randomise | Choses random car to move from valid moves untill win* |
+| breadthfirst | Standard Breadth First Search algorithm |
+| hybrid | Combination of randomise, loopremover and Breadth First |
 
-`python3 main.py {algorithm choice} {board choice} {MAX: 1000}`
-    
-    
-    If MAX if not given the MAX will be pre-set to 1000
+*randomise will repeat itself untill stopped with `ctrl-c`
+
+| Board choices |
+|----------------|
+| 6x6_1 / 6x6_2 / 6x6_3 / 9x9_4 / 9x9_5 / 9x9_6 / 12x12_7 |
+
+*Side note: the state spaces of board 5, 6 and 7 are to large for the breadth first algorithm to complete in reasonable timeframe and finish without causing memory problems. Also the hybrid algorithm takes a couple hours to finish for board 6 and 7. Keep this in mind when running an algorithm - board combination.*
+
+If you want to run Randomise or Hybrid, you can add a MAX for the number of moves the random can do:
+
+`python3 main.py {algorithm choice} {board choice} {MAX}`
+
+If MAX if not given the MAX will be pre-set to 1000
 
 ### Structure
 
@@ -30,8 +43,10 @@ If you want to run Randomise or Hybrid, you can add a MAX for the number of move
     - **/code/algorithms/** : methods to solve the game
 
     - **/code/classes/** : classes to create a game
+    
+    - **/code/visualisation/** : method for visualizing a solution
 
-- **/data/** : data documents to create a board and the beginning position of the cars
+- **/data/** : data documents to create a board containing the beginning position of the cars
 
 - **/design/** : design document with classes
 
@@ -41,7 +56,7 @@ If you want to run Randomise or Hybrid, you can add a MAX for the number of move
 
 This is an example of the visualisation output of board 6x6_1 with the Breadth First Search algorithm. It illustrates the shortest solution to win the game. The red block is the target car and needs to go the exit. 
 
-![alt text](https://github.com/error404teamnamenotfound/Rushhour/blob/main/output/6x6_1/output6x6_1_breadthfirst_21.csv.gif)
+![Output 6x6_1 breadthfirst](output/6x6_1/output6x6_1_breadthfirst_21.csv.gif)
 
 ## Authors
 

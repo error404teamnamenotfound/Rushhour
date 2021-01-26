@@ -1,14 +1,14 @@
-import random
 import csv
+import random
 import time
 
 from code.classes.game import Game
+
 
 class Randomise():
     """
     Algorithm to solve a Rush Hour board with random moves.
     """
-
     def __init__(self, sourcefile, MAX):
         
         self.MAX = int(MAX)

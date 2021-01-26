@@ -2,6 +2,7 @@ import math, random
 
 from code.classes.board import Board
 
+
 class Game():
     """
     Creates game object to play Rush Hour. Checks for possible moves,

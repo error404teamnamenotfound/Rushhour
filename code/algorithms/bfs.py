@@ -1,5 +1,7 @@
-from code.classes.game import Game
 import numpy as np
+
+from code.classes.game import Game
+
 
 class BreadthFirst():
     """

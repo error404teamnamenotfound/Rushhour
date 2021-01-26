@@ -1,20 +1,24 @@
 import csv
-
-import matplotlib.pyplot as plt
-import matplotlib.animation as animation
-from matplotlib.colors import ListedColormap
-from matplotlib import cm
 import numpy as np
 import matplotlib
+import matplotlib.pyplot as plt
+import matplotlib.animation as animation
+
+from matplotlib.colors import ListedColormap
+from matplotlib import cm
+
 from code.classes.game import Game
 
-# initialise globals
+# initialize globals
 ASCII = 63
 VALUE__ = 32
 VALUE_X = 25
 
+
 class Visualize:
-    
+    """
+    Algorithm to create a visualisation for a Rush Hour solution.
+    """
     def __init__(self, sourcefile, outputfile):
 
         # initialize variables
@@ -39,7 +43,6 @@ class Visualize:
 
         # create color map
         self.colormap()
-
 
     def colormap(self):
         """ 
