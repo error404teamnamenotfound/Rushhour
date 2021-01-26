@@ -14,8 +14,8 @@ python3 main.py {algorithm choice} {board choice}
 
 ### Structure
 
-(U+0009)/code/
-(U+0009)(U+0009)/code/algorithms/ : the methods to solve the game
+U+0009/code/
+U+0009 U+0009/code/algorithms/ : the methods to solve the game
 (U+0009)(U+0009)/code/classes/ : classes to create a game
 (U+0009)/data/ : includes the data documents to create a board and the beginning position of the cars
 (U+0009)/design/ : design document with classes 
