@@ -6,28 +6,32 @@ Rush Hour is a sliding puzzle in which the aim is to get the red car to the exit
 
 ### Requirements
 
-This code is written in python 3. 
+This code is written in python 3.8. To run this code successfully some required packages are necessary. These are easy to install with the sequent code:
+
+pip install -r requirements.txt
 
 ### Usage
+
+To run an algorithm write the sequent code. Add the algorithm - and board choice in the command line. 
 
 python3 main.py {algorithm choice} {board choice}
 
 ### Structure
 
-/code/
+- /code/ : includes all the code
 
-/code/algorithms/ : the methods to solve the game
+    - /code/algorithms/ : methods to solve the game
 
-/code/classes/ : classes to create a game
+    - /code/classes/ : classes to create a game
 
-/data/ : includes the data documents to create a board and the beginning position of the cars
+- /data/ : data documents to create a board and the beginning position of the cars
 
-/design/ : design document with classes 
+- /design/ : design document with classes 
 
-/output/ : csv files with moves set and a matplotlib visualisation per board 
+- /output/ : csv files with moves set and a matplotlib visualisation per board 
 
 ### Authors
 
-* Stef Grijpma
-* Mylène van der Maas
-* Melody Kaagman
+- Stef Grijpma
+- Mylène van der Maas
+- Melody Kaagman
