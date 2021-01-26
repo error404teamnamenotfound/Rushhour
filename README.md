@@ -14,15 +14,15 @@ python3 main.py {algorithm choice} {board choice}
 
 ### Structure
 
-/code/
-	/code/algorithms/ : the methods to solve the game
-	/code/classes/ : classes to create a game
-/data/ : includes the data documents to create a board and the beginning position of the cars
-/design/ : design document with classes 
-/output/ : csv files with moves set and a matplotlib visualisation per board 
+(U+0009)/code/
+(U+0009)(U+0009)/code/algorithms/ : the methods to solve the game
+(U+0009)(U+0009)/code/classes/ : classes to create a game
+(U+0009)/data/ : includes the data documents to create a board and the beginning position of the cars
+(U+0009)/design/ : design document with classes 
+(U+0009)/output/ : csv files with moves set and a matplotlib visualisation per board 
 
 ### Authors
 
-- Stef Grijpma
-- Mylène van der Maas
-- Melody Kaagman
+* Stef Grijpma
+* Mylène van der Maas
+* Melody Kaagman
