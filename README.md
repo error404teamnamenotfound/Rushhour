@@ -1,6 +1,6 @@
 # Rush Hour
 
-Rush Hour is a sliding puzzle in which the aim is to get the red car to the exit. In a field of x high and x wide, several cars (two units) and trucks (three units) stand in the way, preventing the red car from reaching the exit. The vehicles cannot change their direction from vertical to horizontal and vice versa. The difficulty of the game is determined by the fact that there is not one straight line to the end goal.
+Rush Hour is a sliding puzzle in which the aim is to get the red car to the exit. In a field of x high and x wide, several cars (two units) and trucks (three units) are in the way, preventing the red car from reaching the exit. The vehicles cannot change their direction from vertical to horizontal and vice versa. The difficulty of the game is determined by the fact that there is not one straight line to the end goal.
 
 ## To get started
 
