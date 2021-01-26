@@ -13,13 +13,16 @@ from code.visualisation.visualisation import Visualize
 if __name__ == '__main__':
 
     MAX = 0
-    # find algorithm and board input
+    # Correct input
     if len(sys.argv) < 3:
         print("command: python main.py breadthfirst 6x6_1")
         sys.exit(1)
 
+    # get algorithm and bord
     algorithm_choice = sys.argv[1]
     board_choice = sys.argv[2]
+    
+    # MAX for randomise
     if len(sys.argv) == 4:
         MAX = sys.argv[3]
 
