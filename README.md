@@ -1,11 +1,28 @@
-# Rushhour
+# Rush Hour
 
-This assignment is part of the minor Programming at the UvA and this code is written by the group Error 404 Team name not found. 
+Rush Hour is a sliding puzzle in which the aim is to get the red car to the exit. In a field of x high and x wide, several cars (two units) and trucks (three units) stand in the way, preventing the red car from reaching the exit. The vehicles must not change their direction from vertical to horizontal and vice versa. The difficulty of the game is determined by the fact that there is not one straight line to the end goal.
 
-The goal of the assignment is to write an algorithm than can complete multiple scenarios of the game. Rush Hour is a seemingly simple puzzle with a surprisingly challenging character. In a field of x high and x wide is a red car. To win the game the red car must go to the exit. But other vehicles block the way; cars two units long and trucks three units long, which may only be moved in their direction of travel. They must not change their direction from vertical to horizontal and vice versa.
+## To get started
 
-Mylène, Stef & Melody
+### Requirements
 
-# Extensions
+This code is written in python 3. 
 
-we used: Free UML Tool for Fast UML Diagrams 
+### Usage
+
+python3 main.py {algorithm choice} {board choice}
+
+### Structure
+
+U+0009/code/
+U+0009 U+0009/code/algorithms/ : the methods to solve the game
+(U+0009)(U+0009)/code/classes/ : classes to create a game
+(U+0009)/data/ : includes the data documents to create a board and the beginning position of the cars
+(U+0009)/design/ : design document with classes 
+&lt;p&gt;/output/ : csv files with moves set and a matplotlib visualisation per board 
+
+### Authors
+
+* Stef Grijpma
+* Mylène van der Maas
+* Melody Kaagman
