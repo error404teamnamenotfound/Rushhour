@@ -9,13 +9,14 @@ class Randomise():
     Algorithm to solve a Rush Hour board with random moves.
     """
 
-    def __init__(self, sourcefile):
+    def __init__(self, sourcefile, MAX):
         
+        self.MAX = int(MAX)
         # get board file
         self.sourcefile = sourcefile
 
         # initialize best moves list
-        self.best_moves = [None] * 10000
+        self.best_moves = [None] * self.MAX
     
     def run(self):
         """
