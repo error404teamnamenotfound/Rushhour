@@ -7,7 +7,7 @@ layout: [[numpy matrix]]
 load_cars(self, source_file): [Cars]
 create_layout(self): [[layout]]
 draw_board(self)
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>510</x><y>0</y><w>170</w><h>200</h></coordinates><panel_attributes>Car
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>510</x><y>0</y><w>170</w><h>190</h></coordinates><panel_attributes>Car
 --
 name: char
 orientation: char
@@ -21,7 +21,7 @@ board: Board
 --
 find_moves(self): [[Car, direction]]
 move(self, car, direction)
-win(self): boolean</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>490</x><y>280</y><w>210</w><h>190</h></coordinates><panel_attributes>Hybrid
+win(self): boolean</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>490</x><y>250</y><w>210</w><h>160</h></coordinates><panel_attributes>Hybrid
 --
 sourcefile: file
 MAX: integer
@@ -30,7 +30,7 @@ run(self): moves_set
 run_randomise(self): moves_set
 run_loopremover(self): moves_set
 run_minibfs(self): moves_set
-run_minibfs_reverse(self): moves_set</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>250</x><y>280</y><w>210</w><h>210</h></coordinates><panel_attributes>Breadth First Search
+run_minibfs_reverse(self): moves_set</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>250</x><y>250</y><w>210</w><h>190</h></coordinates><panel_attributes>Breadth First Search
 --
 game: Game
 archive: {layout:layout}
@@ -39,10 +39,10 @@ last_moves: [direction, car_name]
 get_moves_set(self): [moves]
 try_moves(self)
 won(self): boolean
-not_in_archvive(self): boolean
+not_in_archive(self): boolean
 add_to_queue(self)
 reverse _moves(self)
-run(self): moves_set</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>10</x><y>279</y><w>210</w><h>190</h></coordinates><panel_attributes>Randomise
+run(self): moves_set</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>10</x><y>249</y><w>210</w><h>160</h></coordinates><panel_attributes>Randomise
 --
 Sourcefile: file
 MAX: integer

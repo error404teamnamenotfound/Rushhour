@@ -1,5 +1,4 @@
-import csv
-import sys
+import csv, sys
 
 from code.algorithms.bfs import BreadthFirst
 from code.algorithms.randomise import Randomise
