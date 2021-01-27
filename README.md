@@ -22,17 +22,17 @@ If you want to run Randomise or Hybrid, you can add a MAX for the number of move
 
 ### Structure
 
-- /code/ : includes all the code
+- **/code/** : includes all the code
 
-    - /code/algorithms/ : methods to solve the game
+    - **/code/algorithms/** : methods to solve the game
 
-    - /code/classes/ : classes to create a game
+    - **/code/classes/** : classes to create a game
 
-- /data/ : data documents to create a board and the beginning position of the cars
+- **/data/** : data documents to create a board and the beginning position of the cars
 
-- /design/ : design document with classes
+- **/design/** : design document with classes
 
-- /output/ : csv files with moves set and a matplotlib visualisation per board
+- **/output/** : csv files with moves set and a matplotlib visualisation per board
 
 ### Output
 
