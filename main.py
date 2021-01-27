@@ -12,8 +12,10 @@ from code.visualisation.visualisation import Visualize
 
 if __name__ == '__main__':
 
+    # initialize MAX for randomise
     MAX = 0
-    # Correct input
+    
+    # correct input
     if len(sys.argv) < 3:
         print("command: python main.py breadthfirst 6x6_1")
         sys.exit(1)
@@ -37,12 +39,11 @@ if __name__ == '__main__':
     if algorithm_choice == 'breadthfirst':
         moves_set = algorithms[algorithm_choice](f'data/Rushhour{board_choice}.csv').run()
     
-    if not MAX:
-        MAX = 1000
+    else:
+        if not MAX:
+            MAX = 1000
 
-    moves_set = algorithms[algorithm_choice](f'data/Rushhour{board_choice}.csv', MAX).run()
-
-    
+        moves_set = algorithms[algorithm_choice](f'data/Rushhour{board_choice}.csv', MAX).run()
 
     # write moves set to outputfile
     with open(f'output/output{board_choice}_{algorithm_choice}_{len(moves_set)}.csv', 'w', newline='') as outputfile:
