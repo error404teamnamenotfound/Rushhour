@@ -3,7 +3,6 @@ import sys
 
 from code.algorithms.bfs import BreadthFirst
 from code.algorithms.randomise import Randomise
-#from code.algorithms.hybrid import Hybrid
 from code.algorithms.minibfs import MiniBFS
 from code.algorithms.hybrid import Hybrid
 
