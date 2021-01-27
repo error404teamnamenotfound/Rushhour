@@ -22,7 +22,7 @@ class MiniBFS():
         Creates new game to set moves for the goal layout.
         """
         game = Game(self.sourcefile)
-        for choice in goal_moves:
+        for choice in tuple(goal_moves):
             game.move(choice)
         game.board.create_layout()
 

@@ -21,7 +21,7 @@ class Game():
         valid_moves = []
 
         # loop over cars on board
-        for car in self.board.cars.values():
+        for car in tuple(self.board.cars.values()):
 
             if car.name == last_move[0]:
                 continue

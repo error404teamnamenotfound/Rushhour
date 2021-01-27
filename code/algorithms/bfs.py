@@ -26,7 +26,7 @@ class BreadthFirst():
         """
         Moves cars according to set of moves and creates new layout.
         """
-        for choice in moves_set:
+        for choice in tuple(moves_set):
             self.game.move(choice)
         self.game.board.create_layout()
 
@@ -50,7 +50,7 @@ class BreadthFirst():
         Finds new moves and adds to queue.
         """
         new_moves = self.game.find_moves(moves_set[-1])
-        for new_move in new_moves:
+        for new_move in tuple(new_moves):
             self.queue.append(moves_set + [new_move])
 
     def reverse_moves(self, moves_set):
@@ -58,7 +58,7 @@ class BreadthFirst():
         Reverses moves that are made to get back to beginning board.
         """
         moves_set.reverse()
-        for choice in moves_set:
+        for choice in tuple(moves_set):
             self.game.move([choice[0], -choice[1]])
 
     def run(self):
