@@ -42,6 +42,8 @@ If you want to run Randomise or Hybrid, you can add a MAX for the number of move
     - **/code/algorithms/** : methods to solve the game
 
     - **/code/classes/** : classes to create a game
+    
+    - **/code/visualisation/** : method for visualizing a solution
 
 - **/data/** : data documents to create a board containing the beginning position of the cars
 
