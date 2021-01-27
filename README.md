@@ -38,7 +38,7 @@ If you want to run Randomise or Hybrid, you can add a MAX for the number of move
 
 This is an example of the visualisation output of board 6x6_1 with the Breadth First Search algorithm. It illustrates the shortest solution to win the game.
 
-![alt text](https://github.com/error404teamnamenotfound/Rushhour/blob/main/output/6x6_1/output6x6_1_breadthfirst_21.gif)
+![alt text](https://github.com/error404teamnamenotfound/Rushhour/blob/main/output/6x6_1/output6x6_1_breadthfirst_21.csv.gif)
 
 ### Authors
 
