@@ -14,8 +14,7 @@ class BreadthFirst():
 
         # put first possible moves in queue
         self.queue = [[move] for move in self.game.find_moves(last_move)]
-        # self.queue = [[['X', 1], ['I', -1], ['B', -1], ['G', 1], ['X', 3], ['L', 1], ['E', 1], ['J', 3], ['E', -2], ['H', 1], ['I', -3], ['H', -1], ['D', -1], ['E', 3], ['H', 1], ['I', 2], ['J', -3], ['L', -2], ['G', -2], ['C', -1], ['A', -1]]]
-        
+                
     def get_moves_set(self):
         """
         Returns first item in queue.
@@ -98,6 +97,3 @@ class BreadthFirst():
             
             # add to counter
             counter += 1
-
-            
-

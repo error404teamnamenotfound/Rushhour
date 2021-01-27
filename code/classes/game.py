@@ -1,5 +1,4 @@
-import math
-import random
+import math, random
 
 from code.classes.board import Board
 
@@ -10,7 +9,6 @@ class Game():
     """
     def __init__(self, source_file):
         self.board = Board(source_file)
-        #self.moves = []
 
     def find_moves(self, last_move):
         """
@@ -86,5 +84,4 @@ class Game():
         if self.board.layout[row_e][col_e] == 'X':
 
             return True
-
         return False

@@ -5,14 +5,20 @@ from code.algorithms.loopremover import LoopRemover
 from code.algorithms.minibfs import MiniBFS
 from code.algorithms.minibfs_reverse import MiniBFS_reverse
 
-# define step size for big and small loops
+# initialise globals
 BIG_STEP = 10
 SMALL_STEP = 6
+MAX_6 = 9
+MAX_9 = 5
+MAX_12 = 4
+LOOP_NUM = 3
 
 class Hybrid():
     def __init__(self, sourcefile, MAX):
         self.sourcefile = sourcefile
         self.MAX = MAX
+
+        global MAX_6, MAX_9, MAX_12
         
         # get board size from filename
         result = re.search('Rushhour(.*)x', sourcefile)
@@ -20,11 +26,11 @@ class Hybrid():
 
         # set max moves according to board size
         if size == 6:
-            self.max_moves = 9
+            self.max_moves = MAX_6
         elif size == 9:
-            self.max_moves = 5
+            self.max_moves = MAX_9
         elif size == 12:
-            self.max_moves = 4
+            self.max_moves = MAX_12
 
         # initialize variable to remember length of moves_set
         self.moves_set_archive = []
@@ -72,7 +78,8 @@ class Hybrid():
         Runs hybrid algorithm with random algorithm and 3 loops of
         a forward and reversed algorithm, with loop removers in between.
         """
-
+        global LOOP_NUM
+        
         # run randomise untill ctrl-c
         moves_set = self.run_randomise()
         print(f"Random: {len(moves_set)}")
@@ -81,7 +88,7 @@ class Hybrid():
         moves_set = self.run_loopremover(moves_set)
         print(f"Loopremover: {len(moves_set)}")
 
-        for i in range(3):
+        for i in range(LOOP_NUM):
 
             # run minibfs in steps of 10
             moves_set = self.run_minibfs(moves_set)

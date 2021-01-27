@@ -1,24 +1,56 @@
-<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>270</x><y>190</y><w>200</w><h>200</h></coordinates><panel_attributes>Board
+<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>270</x><y>0</y><w>200</w><h>200</h></coordinates><panel_attributes>Board
 --
-Cars: [Car]
-Size: integer
-Layout: numpy matrix
+cars: [Car]
+size: integer
+layout: [[numpy matrix]]
 --
 load_cars(self, source_file): [Cars]
-create_layout(self): layout
+create_layout(self): [[layout]]
 draw_board(self)
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>530</x><y>190</y><w>170</w><h>200</h></coordinates><panel_attributes>Car
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>530</x><y>0</y><w>170</w><h>200</h></coordinates><panel_attributes>Car
 --
-Name: Char
-Orientation: Char
-Row: Integer
-Col: Integer
-Length: Integer
+name: char
+orientation: char
+row: integer
+col: integer
+length: integer
 --
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>30</x><y>210</y><w>200</w><h>160</h></coordinates><panel_attributes>Game
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>30</x><y>20</y><w>200</w><h>160</h></coordinates><panel_attributes>Game
 --
 board: Board
 --
 find_moves(self): [[Car, direction]]
 move(self, car, direction)
-win(self): boolean</panel_attributes><additional_attributes></additional_attributes></element></diagram>
+win(self): boolean</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>530</x><y>230</y><w>210</w><h>190</h></coordinates><panel_attributes>Hybrid
+--
+sourcefile: file
+--
+run(self)
+Randomise(sourcefile)
+loopremover(output_randomise)
+minibfs(sourcefile, steps, output_randomise)
+minibfs_reverse(sourcefile, steps, output_randomise)
+--
+moves_set</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>270</x><y>230</y><w>210</w><h>210</h></coordinates><panel_attributes>Breadth First Search
+--
+game: Game()
+archive: {layouts}
+last_moves: [direction, car_name]
+--
+get_moves_set(self)
+try_moves(self)
+won(self)
+archive_check(self)
+add_queue(self)
+reverse _queue(self)
+run(self)
+--
+moves_set</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>20</x><y>229</y><w>210</w><h>190</h></coordinates><panel_attributes>Randomise
+--
+Sourcefile: file
+best_moves: integer
+--
+run(self)
+new_game(self)
+play_game(self)
+random_move(self)</panel_attributes><additional_attributes></additional_attributes></element></diagram>

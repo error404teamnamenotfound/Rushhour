@@ -12,7 +12,7 @@ This code is written in python 3.8. To run this code successfully some required 
 
 ### Usage
 
-To run an algorithm write the following code. Add the algorithm - and board choice in the command line.
+To run an breadthfirst search use:
 
 `python3 main.py {algorithm choice} {board choice}`
 
@@ -28,28 +28,34 @@ To run an algorithm write the following code. Add the algorithm - and board choi
 
 *Side note: the state spaces of board 5, 6 and 7 are to large for the breadth first algorithm to complete in reasonable timeframe and finish without causing memory problems. Also the hybrid algorithm takes a couple hours to finish for board 6 and 7. Keep this in mind when running an algorithm - board combination.*
 
+If you want to run Randomise or Hybrid, you can add a MAX for the number of moves a random can do:
+
+`python3 main.py {algorithm choice} {board choice} {MAX: 1000}`
+    
+    
+    If MAX if not given the MAX will be pre-set to 1000
 
 ### Structure
 
-- /code/ : includes all the code
+- **/code/** : includes all the code
 
-    - /code/algorithms/ : methods to solve the game
+    - **/code/algorithms/** : methods to solve the game
 
-    - /code/classes/ : classes to create a game
+    - **/code/classes/** : classes to create a game
 
-- /data/ : data documents to create a board containing the beginning position of the cars
+- **/data/** : data documents to create a board containing the beginning position of the cars
 
-- /design/ : design document with classes
+- **/design/** : design document with classes
 
-- /output/ : csv files with moves set and a matplotlib visualisation per board
+- **/output/** : csv file with moves set and a matplotlib visualisation per board
 
-### Output
+## Output
 
-This is an example of the visualisation output of board 6x6_1 with the Breadth First Search algorithm. It illustrates the shortest solution to win the game.
+This is an example of the visualisation output of board 6x6_1 with the Breadth First Search algorithm. It illustrates the shortest solution to win the game. The red block is the target car and needs to go the exit. 
 
 ![Output 6x6_1 breadthfirst](output/6x6_1/output6x6_1_breadthfirst_21.csv.gif)
 
-### Authors
+## Authors
 
 - Stef Grijpma
 - Mylène van der Maas

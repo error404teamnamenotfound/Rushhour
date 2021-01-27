@@ -9,5 +9,3 @@ class Car():
         self.row = int(row) - 1
         self.length = int(length)
 
-    def __str__(self):
-        return f"Car {self.name} on ({self.row},{self.col})"

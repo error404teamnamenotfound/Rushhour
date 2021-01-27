@@ -17,38 +17,6 @@ class Randomise():
 
         # initialize best moves list
         self.best_moves = [None] * self.MAX
-    
-    def run(self):
-        """
-        Plays games untill interrupted with ctrl-c.
-        """
-        counter = 0
-        try:
-            while True:
-                # keep track of time
-                t0 = time.perf_counter()
-
-                # play game
-                moves_set = self.play_game()
-
-                # stop time
-                t1 = time.perf_counter() - t0
-
-                # print number of played moves, time elapsed and speed
-                #if counter % 1000 == 0:
-                print(f"{len(moves_set)} in {t1:.2f} s")
-                #print(f"{len(moves_set)/t1:.1f} moves/s")
-
-                counter += 1
-
-                # update best moves list when new list is smaller
-                if len(moves_set) < len(self.best_moves):
-                    self.best_moves = moves_set
-            
-        except KeyboardInterrupt:
-
-            # return best moves list
-            return self.best_moves
 
     def random_move(self, valid_moves):
         """
@@ -92,10 +60,34 @@ class Randomise():
             moves_set.append(choice)
             last_move = choice
         
-        #game.board.draw_board()
-        
         return moves_set
 
+    def run(self):
+        """
+        Plays games untill interrupted with ctrl-c.
+        """
+        counter = 0
+        try:
+            while True:
+                # keep track of time
+                t0 = time.perf_counter()
 
+                # play game
+                moves_set = self.play_game()
 
-    
+                # stop time
+                t1 = time.perf_counter() - t0
+
+                # print number of played moves, time elapsed and speed
+                print(f"{len(moves_set)} in {t1:.2f} s")
+                
+                counter += 1
+
+                # update best moves list when new list is smaller
+                if len(moves_set) < len(self.best_moves):
+                    self.best_moves = moves_set
+            
+        except KeyboardInterrupt:
+
+            # return best moves list
+            return self.best_moves

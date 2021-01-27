@@ -1,5 +1,4 @@
 from code.algorithms.bfs import BreadthFirst
-
 from code.classes.game import Game
 
 class BFHybrid(BreadthFirst):
