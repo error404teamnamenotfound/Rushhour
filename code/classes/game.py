@@ -41,14 +41,11 @@ class Game():
                         break
 
                 # prevent border error with try/except
-                try:
-                    for i in range(self.board.size - car.length - car.col):
-                        if self.board.layout[row][col + car.length + i] == '_':
-                            valid_moves.append([car.name, 1 + i])
-                        else:
-                            break
-                except IndexError:
-                    pass
+                for i in range(self.board.size - car.length - car.col):
+                    if self.board.layout[row][col + car.length + i] == '_' and col != self.board.size - 1:
+                        valid_moves.append([car.name, 1 + i])
+                    else:
+                        break
 
             # check for empty spaces up and down from vertical car
             if car.orientation == 'V':
@@ -59,14 +56,11 @@ class Game():
                         break
                 
                 # prevent border error with try/except
-                try:
-                    for i in range(self.board.size - car.length - car.row):
-                        if self.board.layout[row + car.length + i][col] == '_':
-                            valid_moves.append([car.name, 1 + i])
-                        else:
-                            break
-                except IndexError:
-                    pass
+                for i in range(self.board.size - car.length - car.row):
+                    if self.board.layout[row + car.length + i][col] == '_' and row != self.board.size - 1:
+                        valid_moves.append([car.name, 1 + i])
+                    else:
+                        break
         
         return valid_moves
 
