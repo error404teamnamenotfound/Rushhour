@@ -32,7 +32,7 @@ If you want to run Randomise or Hybrid, you can add a MAX for the number of move
 
 - **/design/** : design document with classes
 
-- **/output/** : csv files with moves set and a matplotlib visualisation per board
+- **/output/** : csv file with moves set and a matplotlib visualisation per board
 
 ### Output
 
