@@ -1,3 +1,5 @@
+import re
+
 from code.algorithms.randomise import Randomise
 from code.algorithms.loopremover import LoopRemover
 from code.algorithms.minibfs import MiniBFS
@@ -8,8 +10,12 @@ BIG_STEP = 10
 SMALL_STEP = 6
 
 class Hybrid():
-    def __init__(self, sourcefile, size):
+    def __init__(self, sourcefile):
         self.sourcefile = sourcefile
+
+        # get board size from filename
+        result = re.search('Rushhour(.*)x', sourcefile)
+        size = int(result.group(1))
 
         # set max moves according to board size
         if size == 6:
@@ -26,7 +32,7 @@ class Hybrid():
         """
         Runs randomise algorithm untill stopped with ctrl-c.
         """
-        randomise = Randomise(self.sourcefile)
+        randomise = Randomise(self.sourcefile, 1000)
         moves_set = randomise.run()
         self.moves_set_archive.append(['randomise', len(moves_set)])
         return moves_set
@@ -92,4 +98,5 @@ class Hybrid():
             moves_set = self.run_loopremover(moves_set)
             print(f"Loopremover: {len(moves_set)}")
 
+        print(self.moves_set_archive)
         return moves_set

@@ -30,6 +30,7 @@ if __name__ == '__main__':
     algorithms = {
     "randomise" : Randomise,
     "breadthfirst" : BreadthFirst,
+    "hybrid" : Hybrid
     }
 
     # run algorithm
@@ -49,4 +50,4 @@ if __name__ == '__main__':
         writer.writerows(moves_set)
 
     # visualize output
-    Visualize(f'data/Rushhour{board_choice}.csv', f'output/output{board_choice}_{algorithm_choice}.csv')
+    Visualize(f'data/Rushhour{board_choice}.csv', f'output/output{board_choice}_{algorithm_choice}_{len(moves_set)}.csv')
