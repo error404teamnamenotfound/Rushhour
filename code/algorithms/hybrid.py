@@ -10,9 +10,10 @@ BIG_STEP = 10
 SMALL_STEP = 6
 
 class Hybrid():
-    def __init__(self, sourcefile):
+    def __init__(self, sourcefile, MAX):
         self.sourcefile = sourcefile
-
+        self.MAX = MAX
+        
         # get board size from filename
         result = re.search('Rushhour(.*)x', sourcefile)
         size = int(result.group(1))
@@ -32,7 +33,7 @@ class Hybrid():
         """
         Runs randomise algorithm untill stopped with ctrl-c.
         """
-        randomise = Randomise(self.sourcefile, 1000)
+        randomise = Randomise(self.sourcefile, self.MAX)
         moves_set = randomise.run()
         self.moves_set_archive.append(['randomise', len(moves_set)])
         return moves_set

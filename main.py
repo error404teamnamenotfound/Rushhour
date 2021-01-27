@@ -34,13 +34,15 @@ if __name__ == '__main__':
     }
 
     # run algorithm
-    if algorithm_choice == 'randomise': # or algorithm_choice == 'randomise':
-        if not MAX:
-            MAX = 500
+    if algorithm_choice == 'breadthfirst':
+        moves_set = algorithms[algorithm_choice](f'data/Rushhour{board_choice}.csv').run()
+    
+    if not MAX:
+        MAX = 1000
 
-        moves_set = algorithms[algorithm_choice](f'data/Rushhour{board_choice}.csv', MAX).run()
+    moves_set = algorithms[algorithm_choice](f'data/Rushhour{board_choice}.csv', MAX).run()
 
-    moves_set = algorithms[algorithm_choice](f'data/Rushhour{board_choice}.csv').run()
+    
 
     # write moves set to outputfile
     with open(f'output/output{board_choice}_{algorithm_choice}_{len(moves_set)}.csv', 'w', newline='') as outputfile:
