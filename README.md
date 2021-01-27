@@ -43,6 +43,8 @@ If MAX if not given the MAX will be pre-set to 1000
     - **/code/algorithms/** : methods to solve the game
 
     - **/code/classes/** : classes to create a game
+    
+    - **/code/visualisation/** : method for visualizing a solution
 
 - **/data/** : data documents to create a board containing the beginning position of the cars
 
