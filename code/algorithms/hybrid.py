@@ -5,7 +5,7 @@ from code.algorithms.loopremover import LoopRemover
 from code.algorithms.minibfs import MiniBFS
 from code.algorithms.minibfs_reverse import MiniBFS_reverse
 
-# define step size for big and small loops
+# initialise globals
 BIG_STEP = 10
 SMALL_STEP = 6
 MAX_6 = 9
