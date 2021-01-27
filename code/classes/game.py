@@ -20,9 +20,6 @@ class Game():
         # create new move list
         valid_moves = []
 
-        # no_move = last_move
-        # no_move[1] = -no_move[1]
-
         # loop over cars on board
         for car in self.board.cars.values():
 
@@ -75,34 +72,19 @@ class Game():
         elif car.orientation == 'V':
             car.row += direction
 
-        # add move to list of moves (if latest move is same, just add 1 to move)
-        # if self.moves and [car, direction] == self.moves[-1]:
-        #     self.moves[-1][1] += direction
-        # else:
-        #     self.moves.append(choice)
-
     def win(self):
         """
         Returns true and prints success if red car (XX) is at exit.
         Example: 6x6 exit is at (3, 6) --> index [2][5].
         """
 
-        # # get column right of red car
-        # col_x = self.board.cars['X'].col
-        # col_x = [car.col + 2 for car in self.board.cars if car.name == 'X'][0]
-
         # get coordinates of exit
         row_e = math.ceil(self.board.size / 2) - 1
         col_e = self.board.size - 1
 
         # check if X is on exit or the row towards exit is empty
-        if self.board.layout[row_e][col_e] == 'X': #or all(self.board.layout[row_e][col_x:] == '_')
+        if self.board.layout[row_e][col_e] == 'X':
 
-            # add last moves of X to moves list
-            # moves_left = self.board.size - col_x
-            # self.moves.append(['X', moves_left])
-
-            #print("success")
             return True
 
         return False
