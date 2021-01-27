@@ -1,6 +1,7 @@
 from code.algorithms.bfs import BreadthFirst
 from code.classes.game import Game
 
+
 class BFHybrid(BreadthFirst):
     """
     Creates Breadth First algorithm where first moves are set and goal

@@ -1,6 +1,7 @@
 from code.classes.game import Game
 from code.algorithms.randomise import Randomise
 
+
 class LoopRemover():
     """
     Algorithm that takes a moves set, finds which layouts are visited
@@ -34,7 +35,6 @@ class LoopRemover():
             layout_dict[i] = layout
         
         return key_pairs
-
 
     def run(self):
         """
